@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package UsersBack_Maestro;
+
+import "google/protobuf/duration.proto";
+
+import "File.proto";
+
+message FileUploadRequest {
+  File.NewFile file = 1;
+}
+
+message FileUploadStatus {
+}
+
+message AskFileDownloadRequest {
+  File.FileApproxMetadata metadata = 1;
+}
+
+message AskFileDownloadStatus {
+  google.protobuf.Duration waitingTime = 1;
+}
+
+message FileDownloadRequest {
+  string fileID = 1;
+}
+
+message GetFilesIndexRequest {
+  string dirpath = 1;
+  string userID = 2;
+}
+
+service UsersBack_Maestro_Service {
+  rpc fileUpload(FileUploadRequest) returns (FileUploadStatus);
+  rpc askFileDownload(AskFileDownloadRequest) returns (AskFileDownloadStatus);
+  rpc fileDownload(FileDownloadRequest) returns (File.File);
+  rpc getFilesIndex(GetFilesIndexRequest) returns (File.FilesIndex);
+
+}

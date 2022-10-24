@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package File;
+
+// Time
+import "google/protobuf/timestamp.proto";
+
+message FileApproxMetadata {
+  string name = 1;
+  string dirname = 2;
+  string userID = 3; // TODO clearly define userID globally
+}
+
+message FileMetadata {
+  FileApproxMetadata approxMetadata = 1;
+  string fileID = 2; // TODO clearly define fileID globally
+  string lastEditorID = 3; // TODO clearly define userID globally
+  google.protobuf.Timestamp creation = 4;
+  google.protobuf.Timestamp lastEdit = 5;
+}
+
+message File {
+  FileMetadata metadata = 1;
+  bytes content = 2;
+}
+
+message NewFile {
+  FileApproxMetadata metadata = 1;
+  bytes content = 2;
+}
+
+message FilesIndex {
+  repeated FileMetadata index = 1;
+}
