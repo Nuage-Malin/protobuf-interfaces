@@ -1,0 +1,3 @@
+[submodule "third_parties/protoc-gen-doc"]
+	path = third_parties/protoc-gen-doc
+	url = git@github.com:pseudomuto/protoc-gen-doc.git
