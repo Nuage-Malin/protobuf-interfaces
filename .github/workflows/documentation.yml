@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       # Setup
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
+
       - name: Setup Git
         run: |
           git config --global user.name "GitHub Actions"
