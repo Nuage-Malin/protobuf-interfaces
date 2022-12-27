@@ -4,7 +4,7 @@ package UsersBack_Maestro;
 
 import "google/protobuf/duration.proto";
 
-import "File.proto";
+import "common/File.proto";
 
 message FileUploadRequest {
   File.NewFile file = 1;
