@@ -31,9 +31,8 @@ message GetFilesIndexRequest {
 }
 
 service UsersBack_Maestro_Service {
-  rpc fileUpload(FileUploadRequest) returns (FileUploadStatus);
-  rpc askFileDownload(AskFileDownloadRequest) returns (AskFileDownloadStatus);
-  rpc fileDownload(FileDownloadRequest) returns (File.File);
-  rpc getFilesIndex(GetFilesIndexRequest) returns (File.FilesIndex);
-
+  rpc fileUpload(FileUploadRequest) returns (FileUploadStatus); // Upload a file
+  rpc askFileDownload(AskFileDownloadRequest) returns (AskFileDownloadStatus); // Ask to download a file
+  rpc fileDownload(FileDownloadRequest) returns (File.File); // Download a file if already asked
+  rpc getFilesIndex(GetFilesIndexRequest) returns (File.FilesIndex); // Get file list (ls)
 }
