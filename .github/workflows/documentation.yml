@@ -1,0 +1,35 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  proto-gen-doc:
+    runs-on: ubuntu-22.04
+    steps:
+      # Setup
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
+
+      - name: Setup Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "noreply@github.com"
+
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          submodules: "true"
+
+      # Run
+      - name: Generate documentation
+        run: ./scripts/generate_proto_doc.sh
+
+      - name: Git push
+        run: |
+          git add .
+          git commit -m "[Github Action] Update documentation"
+          git push
