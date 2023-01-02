@@ -39,7 +39,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| fileID | [string](#string) |  |  |
+| fileId | [string](#string) |  |  |
 
 
 
@@ -69,7 +69,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| fileID | [string](#string) |  |  |
+| fileId | [string](#string) |  |  |
 
 
 
