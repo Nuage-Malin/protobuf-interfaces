@@ -14,7 +14,7 @@ message FileUploadStatus {
 }
 
 message AskFileDownloadRequest {
-  string fileID = 1;
+  string fileId = 1;
 }
 
 message AskFileDownloadStatus {
@@ -22,7 +22,7 @@ message AskFileDownloadStatus {
 }
 
 message FileDownloadRequest {
-  string fileID = 1;
+  string fileId = 1;
 }
 
 message GetFilesIndexRequest {
