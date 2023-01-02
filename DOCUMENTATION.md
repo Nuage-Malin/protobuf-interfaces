@@ -39,7 +39,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| metadata | [File.FileApproxMetadata](#File-FileApproxMetadata) |  |  |
+| fileID | [string](#string) |  |  |
 
 
 
