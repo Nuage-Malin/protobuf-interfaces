@@ -14,7 +14,7 @@ message FileUploadStatus {
 }
 
 message AskFileDownloadRequest {
-  File.FileApproxMetadata metadata = 1;
+  string fileID = 1;
 }
 
 message AskFileDownloadStatus {
