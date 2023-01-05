@@ -27,7 +27,7 @@ message FileDownloadRequest {
 
 message GetFilesIndexRequest {
   string dirpath = 1;
-  string userID = 2;
+  string userId = 2;
 }
 
 service UsersBack_Maestro_Service {
