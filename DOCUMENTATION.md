@@ -99,7 +99,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| file | [File.FileMetadata](#File-FileMetadata) |  |  |
+| fileId | [string](#string) |  |  |
 
 
 
