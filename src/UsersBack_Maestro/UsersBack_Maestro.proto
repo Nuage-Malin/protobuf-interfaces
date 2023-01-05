@@ -11,7 +11,7 @@ message FileUploadRequest {
 }
 
 message FileUploadStatus {
-  File.FileMetadata file = 1;
+  string fileId = 1;
 }
 
 message AskFileDownloadRequest {
