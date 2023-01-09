@@ -17,9 +17,10 @@ message FileApproxMetadata {
 message FileMetadata {
   FileApproxMetadata approxMetadata = 1;
   string fileId = 2; // TODO clearly define fileID globally
-  string lastEditorId = 3; // TODO clearly define userID globally
-  google.protobuf.Timestamp creation = 4;
-  google.protobuf.Timestamp lastEdit = 5;
+  bool isDownloadable = 3;
+  string lastEditorId = 4; // TODO clearly define userID globally
+  google.protobuf.Timestamp creation = 5;
+  google.protobuf.Timestamp lastEdit = 6;
 }
 
 message File {
