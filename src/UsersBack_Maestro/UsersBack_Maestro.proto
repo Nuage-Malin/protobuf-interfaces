@@ -17,6 +17,7 @@ message FileUploadRequest {
  * Response from the server after uploading a file, status is known through return value
  */
 message FileUploadStatus {
+  string fileId = 1;
 }
 
 /**
@@ -44,8 +45,8 @@ message FileDownloadRequest {
  * Information indicating what list of file should be provided
  */
 message GetFilesIndexRequest {
-  string dirpath = 1; // Absolute path to the directory containing files
-  string userID = 2; // User id of the user requesting files
+  string dirPath = 1; // Absolute path to the directory containing files
+  string userId = 2; // User id of the user requesting files
 }
 
 /**
