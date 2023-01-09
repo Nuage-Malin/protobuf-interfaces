@@ -6,30 +6,51 @@ import "google/protobuf/duration.proto";
 
 import "common/File.proto";
 
+/**
+ * File to be uploaded to the server
+ */
 message FileUploadRequest {
   File.NewFile file = 1;
 }
 
+/**
+ * Response from the server after uploading a file, status is known through return value
+ */
 message FileUploadStatus {
 }
 
+/**
+ * File id corresponding to the file to be made available for download
+ */
 message AskFileDownloadRequest {
   string fileId = 1;
 }
 
+/**
+ * Time until which the file will be made available for download
+ */
 message AskFileDownloadStatus {
   google.protobuf.Duration waitingTime = 1;
 }
 
+/**
+ * File id corresponding to the file to be downloaded
+ */
 message FileDownloadRequest {
   string fileId = 1;
 }
 
+/**
+ * Information indicating what list of file should be provided
+ */
 message GetFilesIndexRequest {
-  string dirpath = 1;
-  string userID = 2;
+  string dirpath = 1; // Absolute path to the directory containing files
+  string userID = 2; // User id of the user requesting files
 }
 
+/**
+ * Procedures from UsersBack to Maestro
+ */
 service UsersBack_Maestro_Service {
   rpc fileUpload(FileUploadRequest) returns (FileUploadStatus); // Upload a file
   rpc askFileDownload(AskFileDownloadRequest) returns (AskFileDownloadStatus); // Ask to download a file
