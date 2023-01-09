@@ -20,6 +20,7 @@ message FileMetadata {
   string lastEditorId = 3; // TODO clearly define userID globally
   google.protobuf.Timestamp creation = 4;
   google.protobuf.Timestamp lastEdit = 5;
+  bool isDownloadable = 6;
 }
 
 message File {
