@@ -194,6 +194,7 @@ Metadata regarding a file itself and its location
 | ----- | ---- | ----- | ----------- |
 | approxMetadata | [FileApproxMetadata](#File-FileApproxMetadata) |  |  |
 | fileId | [string](#string) |  | TODO clearly define fileID globally |
+| isDownloadable | [bool](#bool) |  |  |
 | lastEditorId | [string](#string) |  | TODO clearly define userID globally |
 | creation | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | lastEdit | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
