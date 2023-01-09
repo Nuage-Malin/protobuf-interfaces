@@ -34,7 +34,7 @@
 <a name="UsersBack_Maestro-AskFileDownloadRequest"></a>
 
 ### AskFileDownloadRequest
-
+File id corresponding to the file to be made available for download
 
 
 | Field | Type | Label | Description |
@@ -49,7 +49,7 @@
 <a name="UsersBack_Maestro-AskFileDownloadStatus"></a>
 
 ### AskFileDownloadStatus
-
+Time until which the file will be made available for download
 
 
 | Field | Type | Label | Description |
@@ -64,7 +64,7 @@
 <a name="UsersBack_Maestro-FileDownloadRequest"></a>
 
 ### FileDownloadRequest
-
+File id corresponding to the file to be downloaded
 
 
 | Field | Type | Label | Description |
@@ -79,7 +79,7 @@
 <a name="UsersBack_Maestro-FileUploadRequest"></a>
 
 ### FileUploadRequest
-
+File to be uploaded to the server
 
 
 | Field | Type | Label | Description |
@@ -94,7 +94,7 @@
 <a name="UsersBack_Maestro-FileUploadStatus"></a>
 
 ### FileUploadStatus
-
+Response from the server after uploading a file, status is known through return value
 
 
 | Field | Type | Label | Description |
@@ -109,13 +109,13 @@
 <a name="UsersBack_Maestro-GetFilesIndexRequest"></a>
 
 ### GetFilesIndexRequest
-
+Information indicating what list of file should be provided
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| dirPath | [string](#string) |  |  |
-| userId | [string](#string) |  |  |
+| dirPath | [string](#string) |  | Absolute path to the directory containing files |
+| userId | [string](#string) |  | User id of the user requesting files |
 
 
 
@@ -131,7 +131,7 @@
 <a name="UsersBack_Maestro-UsersBack_Maestro_Service"></a>
 
 ### UsersBack_Maestro_Service
-
+Procedures from UsersBack to Maestro
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
