@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package Chouf_Maestro;
+
+/**
+ * Description
+ */
+ message TodoRequest {
+}
+
+/**
+ * Description
+ */
+message TodoResponse {
+}
+
+service Chouf_Maestro_Service {
+  rpc todo(TodoRequest) returns (TodoResponse); // Description
+}
