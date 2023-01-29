@@ -1,0 +1,162 @@
+syntax = "proto3";
+
+package Maestro_Santaclaus;
+
+import "common/File.proto";
+
+/**
+ * File to upload to the index
+ */
+message AddFileRequest {
+  File.FileApproxMetadata file = 1;
+  uint64 fileSize = 2;
+}
+
+/**
+ * Response with created file infos
+ */
+message AddFileStatus {
+  string fileId = 1;
+  string diskId = 2;
+}
+
+/**
+ * File to remove from the index
+ */
+message RemoveFileRequest {
+  string fileId = 1;
+}
+
+/**
+ * File removed infos
+ */
+message RemoveFileStatus {}
+
+/**
+ * File to move
+ */
+message MoveFileRequest {
+  string fileId = 1;
+  string filepath = 2;
+}
+
+/**
+ * File moved infos
+ */
+message MoveFileStatus {}
+
+/**
+ * Directory to add to the index
+ */
+message AddDirectoryRequest {
+  string dirPath = 1;
+}
+
+/**
+ * Directory added infos
+ */
+message AddDirectoryStatus {
+  string dirId = 1;
+}
+
+/**
+ * Directory to remove from the index
+ */
+message RemoveDirectoryRequest {
+  string dirId = 1;
+}
+
+/**
+ * Directory removed infos
+ */
+message RemoveDirectoryStatus {}
+
+/**
+ * Directory to move
+ */
+message MoveDirectoryRequest {
+  string dirId = 1;
+  string dirPath = 2;
+}
+
+/**
+ * Directory moved infos
+ */
+message MoveDirectoryStatus {}
+
+/**
+ * File to get
+ */
+message GetFileRequest {
+  string fileId = 1;
+}
+
+/**
+ * File infos
+ */
+message GetFileStatus {
+  File.FileApproxMetadata file = 1;
+  string diskId = 2;
+}
+
+/**
+ * Directory to get
+ */
+message GetDirectoryRequest {
+  string dirId = 1;
+  bool isRecursive = 2;
+}
+
+/**
+ * Directory infos
+ */
+message GetDirectoryStatus {
+  repeated GetFileStatus files = 1;
+}
+
+/**
+ * Uploaded file result
+ */
+message UpdateFileSuccessRequest {
+  string fileId = 1;
+  uint64 newFileSize = 2;
+}
+
+/**
+ * Update file success status
+ */
+message UpdateFileSuccessStatus {}
+
+/**
+ * File to move to another disk
+ */
+message ChangeFileDiskRequest {
+  string fileId = 1;
+}
+
+/**
+ * New file disk
+ */
+message ChangeFileDiskStatus {
+  string diskId = 1;
+}
+
+/**
+ * Procedures from Maestro to Santaclaus
+ */
+service Maestro_Santaclaus_Service {
+  // Files
+  rpc addFile(AddFileRequest) returns (AddFileStatus); // Add a file to the index
+  rpc virtualRemoveFile(RemoveFileRequest) returns (RemoveFileStatus); // Remove file virtualy from the DB (not on disks)
+  rpc physicalRemoveFile(RemoveFileRequest) returns (RemoveFileStatus); // Remove file physically from the file system
+  rpc moveFile(MoveFileRequest) returns (MoveFileStatus); // Move filepath
+  rpc getFile(GetFileRequest) returns (GetFileStatus); // Get file infos
+  rpc updateFileSuccess(UpdateFileSuccessRequest) returns (UpdateFileSuccessStatus); // Upload file to disk successfully
+  rpc changeFileDisk(ChangeFileDiskRequest) returns (ChangeFileDiskStatus); // Change file disk
+
+  // Directories
+  rpc addDirectory(AddDirectoryRequest) returns (AddDirectoryStatus); // Add a directory to the index
+  rpc removeDirectory(RemoveDirectoryRequest) returns (RemoveDirectoryStatus); // Remove a directory from the index
+  rpc moveDirectory(MoveDirectoryRequest) returns (MoveDirectoryStatus); // Move a directory path
+  rpc getDirectory(GetDirectoryRequest) returns (GetDirectoryStatus); // Get directory infos
+}
