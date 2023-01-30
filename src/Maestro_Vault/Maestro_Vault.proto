@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package Maestro_Vault;
+
+import "common/File.proto";
+
+/**
+ * File to upload
+ */
+message UploadFileRequest {
+  string fileId = 1;
+  string userId = 2;
+  string diskId = 3;
+  string content = 4;
+}
+
+/**
+ * Upload result
+ */
+message UploadFileStatus {}
+
+/**
+ * Files to upload
+ */
+message UploadFilesRequest {
+  repeated UploadFileRequest files = 1;
+}
+
+/**
+ * Upload result
+ */
+message UploadFilesStatus {
+  repeated string fileIdFailures = 1;
+}
+
+/**
+ * File to download
+ */
+message DownloadFileRequest {
+  string fileId = 1;
+  string userId = 2;
+  string diskId = 3;
+}
+
+/**
+ * Files to remove
+ */
+message RemoveFilesRequest {
+  repeated string fileId = 1;
+  string diskId = 3;
+}
+
+/**
+ * Remove result
+ */
+message RemoveFilesStatus {
+  repeated string fileIdFailures = 1;
+}
+
+/**
+ * Procedures from Maestro to Vault
+ */
+service Maestro_Vault_Service {
+  // Upload
+  rpc uploadFile(UploadFileRequest) returns (UploadFileStatus); // Upload a file
+  rpc uploadFiles(UploadFilesRequest) returns (UploadFilesStatus); // Upload multiple files
+  rpc removeFiles(RemoveFilesRequest) returns (RemoveFilesStatus); // Remove multiple files
+
+  // Download
+  rpc downloadFile(DownloadFileRequest) returns (DownloadFileRequest); // Download a file
+}
