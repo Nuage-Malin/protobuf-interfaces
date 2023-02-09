@@ -2,5 +2,7 @@
 .vscode
 
 tmp
+TODO
 
-generated
+generated/*
+!generated/.gitkeep

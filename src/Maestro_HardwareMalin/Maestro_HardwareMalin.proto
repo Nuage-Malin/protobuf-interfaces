@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package Maestro_HardwareMalin;
+
+/**
+ * Disk to ask
+ */
+message DiskStatusRequest {
+  string diskId = 1;
+}
+
+/**
+ * Response with disk status
+ */
+message DiskStatusStatus {
+  bool status = 1;
+}
+
+/**
+ * Disk to wakeup or shutdown
+ */
+message SetDiskStateRequest {
+  string diskId = 1;
+  bool state = 2;
+}
+
+message SetDiskStateStatus {}
+
+/**
+ * Procedures from Maestro to HardwareMalin
+ */
+service Maestro_HardwareMalin_Service {
+  rpc diskStatus(DiskStatusRequest) returns (DiskStatusStatus); // Ask for disk status
+  rpc setDiskState(SetDiskStateRequest) returns (SetDiskStateStatus);
+}
