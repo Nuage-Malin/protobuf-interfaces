@@ -2,8 +2,6 @@ syntax = "proto3";
 
 package Maestro_Vault;
 
-import "common/File.proto";
-
 /**
  * File to upload
  */
