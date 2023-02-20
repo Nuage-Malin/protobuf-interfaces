@@ -3,16 +3,27 @@
 
 ## Table of Contents
 
-- [Maestro_Vault/Maestro_Vault.proto](#Maestro_Vault_Maestro_Vault-proto)
-    - [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest)
-    - [RemoveFilesRequest](#Maestro_Vault-RemoveFilesRequest)
-    - [RemoveFilesStatus](#Maestro_Vault-RemoveFilesStatus)
-    - [UploadFileRequest](#Maestro_Vault-UploadFileRequest)
-    - [UploadFileStatus](#Maestro_Vault-UploadFileStatus)
-    - [UploadFilesRequest](#Maestro_Vault-UploadFilesRequest)
-    - [UploadFilesStatus](#Maestro_Vault-UploadFilesStatus)
+- [UsersBack_Maestro/UsersBack_Maestro.proto](#UsersBack_Maestro_UsersBack_Maestro-proto)
+    - [AskFileDownloadRequest](#UsersBack_Maestro-AskFileDownloadRequest)
+    - [AskFileDownloadStatus](#UsersBack_Maestro-AskFileDownloadStatus)
+    - [FileDownloadRequest](#UsersBack_Maestro-FileDownloadRequest)
+    - [FileUploadRequest](#UsersBack_Maestro-FileUploadRequest)
+    - [FileUploadStatus](#UsersBack_Maestro-FileUploadStatus)
+    - [GetFilesIndexRequest](#UsersBack_Maestro-GetFilesIndexRequest)
+    - [GetUserConsumptionRequest](#UsersBack_Maestro-GetUserConsumptionRequest)
+    - [GetUserConsumptionStatus](#UsersBack_Maestro-GetUserConsumptionStatus)
+    - [GetUserDiskSpaceRequest](#UsersBack_Maestro-GetUserDiskSpaceRequest)
+    - [GetUserDiskSpaceStatus](#UsersBack_Maestro-GetUserDiskSpaceStatus)
   
-    - [Maestro_Vault_Service](#Maestro_Vault-Maestro_Vault_Service)
+    - [UsersBack_Maestro_Service](#UsersBack_Maestro-UsersBack_Maestro_Service)
+  
+- [Maestro_HardwareMalin/Maestro_HardwareMalin.proto](#Maestro_HardwareMalin_Maestro_HardwareMalin-proto)
+    - [DiskStatusRequest](#Maestro_HardwareMalin-DiskStatusRequest)
+    - [DiskStatusStatus](#Maestro_HardwareMalin-DiskStatusStatus)
+    - [SetDiskStateRequest](#Maestro_HardwareMalin-SetDiskStateRequest)
+    - [SetDiskStateStatus](#Maestro_HardwareMalin-SetDiskStateStatus)
+  
+    - [Maestro_HardwareMalin_Service](#Maestro_HardwareMalin-Maestro_HardwareMalin_Service)
   
 - [Maestro_Santaclaus/Maestro_Santaclaus.proto](#Maestro_Santaclaus_Maestro_Santaclaus-proto)
     - [AddDirectoryRequest](#Maestro_Santaclaus-AddDirectoryRequest)
@@ -38,6 +49,17 @@
   
     - [Maestro_Santaclaus_Service](#Maestro_Santaclaus-Maestro_Santaclaus_Service)
   
+- [Maestro_Vault/Maestro_Vault.proto](#Maestro_Vault_Maestro_Vault-proto)
+    - [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest)
+    - [RemoveFilesRequest](#Maestro_Vault-RemoveFilesRequest)
+    - [RemoveFilesStatus](#Maestro_Vault-RemoveFilesStatus)
+    - [UploadFileRequest](#Maestro_Vault-UploadFileRequest)
+    - [UploadFileStatus](#Maestro_Vault-UploadFileStatus)
+    - [UploadFilesRequest](#Maestro_Vault-UploadFilesRequest)
+    - [UploadFilesStatus](#Maestro_Vault-UploadFilesStatus)
+  
+    - [Maestro_Vault_Service](#Maestro_Vault-Maestro_Vault_Service)
+  
 - [common/File.proto](#common_File-proto)
     - [File](#File-File)
     - [FileApproxMetadata](#File-FileApproxMetadata)
@@ -45,139 +67,166 @@
     - [FilesIndex](#File-FilesIndex)
     - [NewFile](#File-NewFile)
   
-- [UsersBack_Maestro/UsersBack_Maestro.proto](#UsersBack_Maestro_UsersBack_Maestro-proto)
-    - [AskFileDownloadRequest](#UsersBack_Maestro-AskFileDownloadRequest)
-    - [AskFileDownloadStatus](#UsersBack_Maestro-AskFileDownloadStatus)
-    - [FileDownloadRequest](#UsersBack_Maestro-FileDownloadRequest)
-    - [FileUploadRequest](#UsersBack_Maestro-FileUploadRequest)
-    - [FileUploadStatus](#UsersBack_Maestro-FileUploadStatus)
-    - [GetFilesIndexRequest](#UsersBack_Maestro-GetFilesIndexRequest)
-    - [GetUserConsumptionRequest](#UsersBack_Maestro-GetUserConsumptionRequest)
-    - [GetUserConsumptionStatus](#UsersBack_Maestro-GetUserConsumptionStatus)
-    - [GetUserDiskSpaceRequest](#UsersBack_Maestro-GetUserDiskSpaceRequest)
-    - [GetUserDiskSpaceStatus](#UsersBack_Maestro-GetUserDiskSpaceStatus)
-  
-    - [UsersBack_Maestro_Service](#UsersBack_Maestro-UsersBack_Maestro_Service)
-  
-- [Maestro_HardwareMalin/Maestro_HardwareMalin.proto](#Maestro_HardwareMalin_Maestro_HardwareMalin-proto)
-    - [DiskStatusRequest](#Maestro_HardwareMalin-DiskStatusRequest)
-    - [DiskStatusStatus](#Maestro_HardwareMalin-DiskStatusStatus)
-    - [SetDiskStateRequest](#Maestro_HardwareMalin-SetDiskStateRequest)
-    - [SetDiskStateStatus](#Maestro_HardwareMalin-SetDiskStateStatus)
-  
-    - [Maestro_HardwareMalin_Service](#Maestro_HardwareMalin-Maestro_HardwareMalin_Service)
-  
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="Maestro_Vault_Maestro_Vault-proto"></a>
+<a name="UsersBack_Maestro_UsersBack_Maestro-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## Maestro_Vault/Maestro_Vault.proto
+## UsersBack_Maestro/UsersBack_Maestro.proto
 
 
 
-<a name="Maestro_Vault-DownloadFileRequest"></a>
+<a name="UsersBack_Maestro-AskFileDownloadRequest"></a>
 
-### DownloadFileRequest
-File to download
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileId | [string](#string) |  |  |
-| userId | [string](#string) |  |  |
-| diskId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Vault-RemoveFilesRequest"></a>
-
-### RemoveFilesRequest
-Files to remove
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileId | [string](#string) | repeated |  |
-| diskId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Vault-RemoveFilesStatus"></a>
-
-### RemoveFilesStatus
-Remove result
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileIdFailures | [string](#string) | repeated |  |
-
-
-
-
-
-
-<a name="Maestro_Vault-UploadFileRequest"></a>
-
-### UploadFileRequest
-File to upload
+### AskFileDownloadRequest
+File id corresponding to the file to be made available for download
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | fileId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-AskFileDownloadStatus"></a>
+
+### AskFileDownloadStatus
+Time until which the file will be made available for download
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| waitingTime | [google.protobuf.Duration](#google-protobuf-Duration) |  |  |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-FileDownloadRequest"></a>
+
+### FileDownloadRequest
+File id corresponding to the file to be downloaded
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-FileUploadRequest"></a>
+
+### FileUploadRequest
+File to be uploaded to the server
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| file | [File.NewFile](#File-NewFile) |  |  |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-FileUploadStatus"></a>
+
+### FileUploadStatus
+Response from the server after uploading a file, status is known through return value
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-GetFilesIndexRequest"></a>
+
+### GetFilesIndexRequest
+Information indicating what list of file should be provided
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| dirPath | [string](#string) |  | Absolute path to the directory containing files |
+| userId | [string](#string) |  | User id of the user requesting files |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-GetUserConsumptionRequest"></a>
+
+### GetUserConsumptionRequest
+Users consumption on a period
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
 | userId | [string](#string) |  |  |
-| diskId | [string](#string) |  |  |
-| content | [string](#string) |  |  |
+| startDate | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | Start date of the period |
+| endDate | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | End date of the period |
 
 
 
 
 
 
-<a name="Maestro_Vault-UploadFileStatus"></a>
+<a name="UsersBack_Maestro-GetUserConsumptionStatus"></a>
 
-### UploadFileStatus
-Upload result
+### GetUserConsumptionStatus
 
-
-
-
-
-
-<a name="Maestro_Vault-UploadFilesRequest"></a>
-
-### UploadFilesRequest
-Files to upload
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| files | [UploadFileRequest](#Maestro_Vault-UploadFileRequest) | repeated |  |
+| consumption | [uint64](#uint64) |  |  |
 
 
 
 
 
 
-<a name="Maestro_Vault-UploadFilesStatus"></a>
+<a name="UsersBack_Maestro-GetUserDiskSpaceRequest"></a>
 
-### UploadFilesStatus
-Upload result
+### GetUserDiskSpaceRequest
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| fileIdFailures | [string](#string) | repeated |  |
+| userId | [string](#string) |  |  |
+| date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | Date can be now or an older one |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-GetUserDiskSpaceStatus"></a>
+
+### GetUserDiskSpaceStatus
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| totalDiskSpace | [uint64](#uint64) |  |  |
+| usedDiskSpace | [uint64](#uint64) |  |  |
 
 
 
@@ -190,21 +239,102 @@ Upload result
  
 
 
-<a name="Maestro_Vault-Maestro_Vault_Service"></a>
+<a name="UsersBack_Maestro-UsersBack_Maestro_Service"></a>
 
-### Maestro_Vault_Service
-Procedures from Maestro to Vault
+### UsersBack_Maestro_Service
+Procedures from UsersBack to Maestro
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| uploadFile | [UploadFileRequest](#Maestro_Vault-UploadFileRequest) | [UploadFileStatus](#Maestro_Vault-UploadFileStatus) | Upload
+| fileUpload | [FileUploadRequest](#UsersBack_Maestro-FileUploadRequest) | [FileUploadStatus](#UsersBack_Maestro-FileUploadStatus) | Upload a file |
+| askFileDownload | [AskFileDownloadRequest](#UsersBack_Maestro-AskFileDownloadRequest) | [AskFileDownloadStatus](#UsersBack_Maestro-AskFileDownloadStatus) | Ask to download a file |
+| fileDownload | [FileDownloadRequest](#UsersBack_Maestro-FileDownloadRequest) | [.File.File](#File-File) | Download a file if already asked |
+| getFilesIndex | [GetFilesIndexRequest](#UsersBack_Maestro-GetFilesIndexRequest) | [.File.FilesIndex](#File-FilesIndex) | Get file list (ls) |
+| getUserConsumption | [GetUserConsumptionRequest](#UsersBack_Maestro-GetUserConsumptionRequest) | [GetUserConsumptionStatus](#UsersBack_Maestro-GetUserConsumptionStatus) | Get users consumption on period |
+| getUserDiskSpace | [GetUserDiskSpaceRequest](#UsersBack_Maestro-GetUserDiskSpaceRequest) | [GetUserDiskSpaceStatus](#UsersBack_Maestro-GetUserDiskSpaceStatus) |  |
 
-Upload a file |
-| uploadFiles | [UploadFilesRequest](#Maestro_Vault-UploadFilesRequest) | [UploadFilesStatus](#Maestro_Vault-UploadFilesStatus) | Upload multiple files |
-| removeFiles | [RemoveFilesRequest](#Maestro_Vault-RemoveFilesRequest) | [RemoveFilesStatus](#Maestro_Vault-RemoveFilesStatus) | Remove multiple files |
-| downloadFile | [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest) | [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest) | Download
+ 
 
-Download a file |
+
+
+<a name="Maestro_HardwareMalin_Maestro_HardwareMalin-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## Maestro_HardwareMalin/Maestro_HardwareMalin.proto
+
+
+
+<a name="Maestro_HardwareMalin-DiskStatusRequest"></a>
+
+### DiskStatusRequest
+Disk to ask
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| diskId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="Maestro_HardwareMalin-DiskStatusStatus"></a>
+
+### DiskStatusStatus
+Response with disk status
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| status | [bool](#bool) |  |  |
+
+
+
+
+
+
+<a name="Maestro_HardwareMalin-SetDiskStateRequest"></a>
+
+### SetDiskStateRequest
+Disk to wakeup or shutdown
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| diskId | [string](#string) |  |  |
+| state | [bool](#bool) |  |  |
+
+
+
+
+
+
+<a name="Maestro_HardwareMalin-SetDiskStateStatus"></a>
+
+### SetDiskStateStatus
+
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="Maestro_HardwareMalin-Maestro_HardwareMalin_Service"></a>
+
+### Maestro_HardwareMalin_Service
+Procedures from Maestro to HardwareMalin
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| diskStatus | [DiskStatusRequest](#Maestro_HardwareMalin-DiskStatusRequest) | [DiskStatusStatus](#Maestro_HardwareMalin-DiskStatusStatus) | Ask for disk status |
+| setDiskState | [SetDiskStateRequest](#Maestro_HardwareMalin-SetDiskStateRequest) | [SetDiskStateStatus](#Maestro_HardwareMalin-SetDiskStateStatus) |  |
 
  
 
@@ -532,6 +662,145 @@ Add a directory to the index |
 
 
 
+<a name="Maestro_Vault_Maestro_Vault-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## Maestro_Vault/Maestro_Vault.proto
+
+
+
+<a name="Maestro_Vault-DownloadFileRequest"></a>
+
+### DownloadFileRequest
+File to download
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+| userId | [string](#string) |  |  |
+| diskId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-RemoveFilesRequest"></a>
+
+### RemoveFilesRequest
+Files to remove
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) | repeated |  |
+| diskId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-RemoveFilesStatus"></a>
+
+### RemoveFilesStatus
+Remove result
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileIdFailures | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-UploadFileRequest"></a>
+
+### UploadFileRequest
+File to upload
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+| userId | [string](#string) |  |  |
+| diskId | [string](#string) |  |  |
+| content | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-UploadFileStatus"></a>
+
+### UploadFileStatus
+Upload result
+
+
+
+
+
+
+<a name="Maestro_Vault-UploadFilesRequest"></a>
+
+### UploadFilesRequest
+Files to upload
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| files | [UploadFileRequest](#Maestro_Vault-UploadFileRequest) | repeated |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-UploadFilesStatus"></a>
+
+### UploadFilesStatus
+Upload result
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileIdFailures | [string](#string) | repeated |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="Maestro_Vault-Maestro_Vault_Service"></a>
+
+### Maestro_Vault_Service
+Procedures from Maestro to Vault
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| uploadFile | [UploadFileRequest](#Maestro_Vault-UploadFileRequest) | [UploadFileStatus](#Maestro_Vault-UploadFileStatus) | Upload
+
+Upload a file |
+| uploadFiles | [UploadFilesRequest](#Maestro_Vault-UploadFilesRequest) | [UploadFilesStatus](#Maestro_Vault-UploadFilesStatus) | Upload multiple files |
+| removeFiles | [RemoveFilesRequest](#Maestro_Vault-RemoveFilesRequest) | [RemoveFilesStatus](#Maestro_Vault-RemoveFilesStatus) | Remove multiple files |
+| downloadFile | [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest) | [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest) | Download
+
+Download a file |
+
+ 
+
+
+
 <a name="common_File-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -627,275 +896,6 @@ Metadata regarding a file itself and its location
  
 
  
-
- 
-
-
-
-<a name="UsersBack_Maestro_UsersBack_Maestro-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## UsersBack_Maestro/UsersBack_Maestro.proto
-
-
-
-<a name="UsersBack_Maestro-AskFileDownloadRequest"></a>
-
-### AskFileDownloadRequest
-File id corresponding to the file to be made available for download
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="UsersBack_Maestro-AskFileDownloadStatus"></a>
-
-### AskFileDownloadStatus
-Time until which the file will be made available for download
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| waitingTime | [google.protobuf.Duration](#google-protobuf-Duration) |  |  |
-
-
-
-
-
-
-<a name="UsersBack_Maestro-FileDownloadRequest"></a>
-
-### FileDownloadRequest
-File id corresponding to the file to be downloaded
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="UsersBack_Maestro-FileUploadRequest"></a>
-
-### FileUploadRequest
-File to be uploaded to the server
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| file | [File.NewFile](#File-NewFile) |  |  |
-
-
-
-
-
-
-<a name="UsersBack_Maestro-FileUploadStatus"></a>
-
-### FileUploadStatus
-Response from the server after uploading a file, status is known through return value
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="UsersBack_Maestro-GetFilesIndexRequest"></a>
-
-### GetFilesIndexRequest
-Information indicating what list of file should be provided
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| dirPath | [string](#string) |  | Absolute path to the directory containing files |
-| userId | [string](#string) |  | User id of the user requesting files |
-
-
-
-
-
-
-<a name="UsersBack_Maestro-GetUserConsumptionRequest"></a>
-
-### GetUserConsumptionRequest
-Users consumption on a period
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| userId | [string](#string) |  |  |
-| startDate | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | Start date of the period |
-| endDate | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | End date of the period |
-
-
-
-
-
-
-<a name="UsersBack_Maestro-GetUserConsumptionStatus"></a>
-
-### GetUserConsumptionStatus
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| consumption | [int64](#int64) |  |  |
-
-
-
-
-
-
-<a name="UsersBack_Maestro-GetUserDiskSpaceRequest"></a>
-
-### GetUserDiskSpaceRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| userId | [string](#string) |  |  |
-| date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | Date can be now or an older one |
-
-
-
-
-
-
-<a name="UsersBack_Maestro-GetUserDiskSpaceStatus"></a>
-
-### GetUserDiskSpaceStatus
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| totalDiskSpace | [int64](#int64) |  |  |
-| usedDiskSpace | [int64](#int64) |  |  |
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="UsersBack_Maestro-UsersBack_Maestro_Service"></a>
-
-### UsersBack_Maestro_Service
-Procedures from UsersBack to Maestro
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| fileUpload | [FileUploadRequest](#UsersBack_Maestro-FileUploadRequest) | [FileUploadStatus](#UsersBack_Maestro-FileUploadStatus) | Upload a file |
-| askFileDownload | [AskFileDownloadRequest](#UsersBack_Maestro-AskFileDownloadRequest) | [AskFileDownloadStatus](#UsersBack_Maestro-AskFileDownloadStatus) | Ask to download a file |
-| fileDownload | [FileDownloadRequest](#UsersBack_Maestro-FileDownloadRequest) | [.File.File](#File-File) | Download a file if already asked |
-| getFilesIndex | [GetFilesIndexRequest](#UsersBack_Maestro-GetFilesIndexRequest) | [.File.FilesIndex](#File-FilesIndex) | Get file list (ls) |
-| getUserConsumption | [GetUserConsumptionRequest](#UsersBack_Maestro-GetUserConsumptionRequest) | [GetUserConsumptionStatus](#UsersBack_Maestro-GetUserConsumptionStatus) | Get users consumption on period |
-| getUserDiskSpace | [GetUserDiskSpaceRequest](#UsersBack_Maestro-GetUserDiskSpaceRequest) | [GetUserDiskSpaceStatus](#UsersBack_Maestro-GetUserDiskSpaceStatus) |  |
-
- 
-
-
-
-<a name="Maestro_HardwareMalin_Maestro_HardwareMalin-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## Maestro_HardwareMalin/Maestro_HardwareMalin.proto
-
-
-
-<a name="Maestro_HardwareMalin-DiskStatusRequest"></a>
-
-### DiskStatusRequest
-Disk to ask
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| diskId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="Maestro_HardwareMalin-DiskStatusStatus"></a>
-
-### DiskStatusStatus
-Response with disk status
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [bool](#bool) |  |  |
-
-
-
-
-
-
-<a name="Maestro_HardwareMalin-SetDiskStateRequest"></a>
-
-### SetDiskStateRequest
-Disk to wakeup or shutdown
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| diskId | [string](#string) |  |  |
-| state | [bool](#bool) |  |  |
-
-
-
-
-
-
-<a name="Maestro_HardwareMalin-SetDiskStateStatus"></a>
-
-### SetDiskStateStatus
-
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="Maestro_HardwareMalin-Maestro_HardwareMalin_Service"></a>
-
-### Maestro_HardwareMalin_Service
-Procedures from Maestro to HardwareMalin
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| diskStatus | [DiskStatusRequest](#Maestro_HardwareMalin-DiskStatusRequest) | [DiskStatusStatus](#Maestro_HardwareMalin-DiskStatusStatus) | Ask for disk status |
-| setDiskState | [SetDiskStateRequest](#Maestro_HardwareMalin-SetDiskStateRequest) | [SetDiskStateStatus](#Maestro_HardwareMalin-SetDiskStateStatus) |  |
 
  
 
