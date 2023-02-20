@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        language: [cpp, go]
+        language: [cpp]
     steps:
       # Setup
       - name: Install Protoc
