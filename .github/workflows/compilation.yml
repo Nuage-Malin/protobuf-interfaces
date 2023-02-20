@@ -21,11 +21,9 @@ jobs:
 
       # Run
       - name: DEBUG
-        run: |
-          echo "$language"
-          protoc --version
+        run: ${{ matrix.language }}
 
       - name: Build
         run: |
-          echo "protoc -Isrc/ --${language}_out=src/ src/**/*.proto"
-          protoc -Isrc/ --${language}_out=src/ src/**/*.proto
+          echo "protoc -Isrc/ --${{ matrix.language }}_out=src/ src/**/*.proto"
+          protoc -Isrc/ --${{ matrix.language }}_out=src/ src/**/*.proto
