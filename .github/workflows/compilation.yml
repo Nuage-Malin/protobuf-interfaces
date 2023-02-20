@@ -20,6 +20,11 @@ jobs:
         uses: actions/checkout@v3
 
       # Run
+      - name: DEBUG
+        run: |
+          echo "$language"
+          protoc --version
+
       - name: Build
         run: |
           echo "protoc -Isrc/ --${language}_out=src/ src/**/*.proto"
