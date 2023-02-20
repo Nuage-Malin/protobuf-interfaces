@@ -7,9 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
-    # strategy:
-    #   matrix:
-    #     language: [cpp, go]
+    strategy:
+      matrix:
+        language: [cpp, go]
     steps:
       # Setup
       - name: Install Protoc
@@ -21,5 +21,6 @@ jobs:
 
       # Run
       - name: Build
-        run: protoc -Isrc/ --cpp_out=src/ src/**/*.proto
-        # run: protoc -Isrc/ --${language}_out=src/ src/**/*.proto
+        run: |
+          protoc -Isrc/ --${language}_out=src/ src/**/*.proto
+          echo "protoc -Isrc/ --cpp_out=src/ src/**/*.proto"
