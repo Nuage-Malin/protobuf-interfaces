@@ -22,5 +22,5 @@ jobs:
       # Run
       - name: Build
         run: |
+          echo "protoc -Isrc/ --${language}_out=src/ src/**/*.proto"
           protoc -Isrc/ --${language}_out=src/ src/**/*.proto
-          echo "protoc -Isrc/ --cpp_out=src/ src/**/*.proto"
