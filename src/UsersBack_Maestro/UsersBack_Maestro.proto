@@ -11,7 +11,7 @@ import "common/File.proto";
  * File to be uploaded to the server
  */
 message FileUploadRequest {
-  File.Newile file = 1;
+  File.NewFile file = 1;
 }
 
 /**
