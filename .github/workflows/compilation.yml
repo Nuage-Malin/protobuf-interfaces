@@ -1,0 +1,24 @@
+name: Check compilation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        language: [cpp]
+    steps:
+      # Setup
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
+
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Run
+      - name: Build
+        run: protoc -Isrc/ --${{ matrix.language }}_out=src/ src/**/*.proto
