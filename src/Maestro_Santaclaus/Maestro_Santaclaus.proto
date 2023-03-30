@@ -4,7 +4,6 @@ package Maestro_Santaclaus;
 
 import "common/File.proto";
 
-// option go_package = "NuageMalin/Maestro_Santaclaus";
 option go_package = "./";
 
 /**

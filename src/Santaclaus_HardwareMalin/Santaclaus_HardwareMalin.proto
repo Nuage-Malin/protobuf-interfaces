@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package Santaclaus_HardwareMalin;
+
+import "common/File.proto";
+import "common/Disk.proto";
+
+option go_package = "./";
+
+/**
+ * Get all possible disks
+ */
+message GetDisksRequest {
+}
+/**
+ * Get all possible disks
+ */
+message GetDisksStatus {
+    Disk.Disks disks = 1;
+}
+
+
+/**
+ * Procedures from Maestro to Santaclaus
+ */
+service Santaclaus_HardwareMalin_Service {
+  // Files
+  rpc getDisks(GetDisksRequest) returns (GetDisksStatus); // Get all possible disks
+}
+
+// [] getDisks
