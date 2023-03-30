@@ -13,6 +13,7 @@ option go_package = "./";
 message AddFileRequest {
   File.FileApproxMetadata file = 1;
   uint64 fileSize = 2;
+  // todo put dir id
 }
 
 /**
@@ -36,11 +37,25 @@ message RemoveFileRequest {
 message RemoveFileStatus {}
 
 /**
+ * Files to remove from the index
+ */
+message RemoveFilesRequest {
+  repeated string fileIds = 1;
+}
+
+/**
+ * Files removed infos
+ */
+message RemoveFilesStatus {}
+
+/**
  * File to move
  */
 message MoveFileRequest {
   string fileId = 1;
-  string filepath = 2;
+  string name = 2;
+  string dirId = 3;
+  // string filepath = 2; // old // todo remove ?
 }
 
 /**
@@ -52,7 +67,8 @@ message MoveFileStatus {}
  * Directory to add to the index
  */
 message AddDirectoryRequest {
-  string dirPath = 1;
+  File.FileApproxMetadata directory = 1;
+  // todo add directory id of parent instead of path
 }
 
 /**
@@ -72,14 +88,18 @@ message RemoveDirectoryRequest {
 /**
  * Directory removed infos
  */
-message RemoveDirectoryStatus {}
+message RemoveDirectoryStatus {
+  repeated string fileIdsToRemove = 1;
+}
 
 /**
  * Directory to move
  */
 message MoveDirectoryRequest {
   string dirId = 1;
-  string dirPath = 2;
+  // string dirPath = 2;
+  string name = 2;
+  string newLocationDirId = 3;
 }
 
 /**
@@ -98,8 +118,9 @@ message GetFileRequest {
  * File infos
  */
 message GetFileStatus {
-  File.FileApproxMetadata file = 1;
+  File.FileMetadata file = 1;
   string diskId = 2;
+  // todo time before availability ?
 }
 
 /**
@@ -114,7 +135,12 @@ message GetDirectoryRequest {
  * Directory infos
  */
 message GetDirectoryStatus {
-  repeated GetFileStatus files = 1;
+  File.FilesIndex subFiles = 1;
+
+  // todo replace by FileMetadata in order to have the ID
+  // todo rename by recursive_dirs_files something to have files and directories into that
+    //      or maybe have 2 different variables for files and directories
+    // maybe ask Nell what he prefers
 }
 
 /**
@@ -151,10 +177,14 @@ service Maestro_Santaclaus_Service {
   // Files
   rpc addFile(AddFileRequest) returns (AddFileStatus); // Add a file to the index
   rpc virtualRemoveFile(RemoveFileRequest) returns (RemoveFileStatus); // Remove file virtualy from the DB (not on disks)
+  rpc virtualRemoveFiles(RemoveFilesRequest) returns (RemoveFilesStatus); // Remove files virtualy from the DB (not on disks)
   rpc physicalRemoveFile(RemoveFileRequest) returns (RemoveFileStatus); // Remove file physically from the file system
+  rpc physicalRemoveFiles(RemoveFilesRequest) returns (RemoveFilesStatus); // Remove file physically from the file system
   rpc moveFile(MoveFileRequest) returns (MoveFileStatus); // Move filepath
   rpc getFile(GetFileRequest) returns (GetFileStatus); // Get file infos
+  // todo set file downloadable
   rpc updateFileSuccess(UpdateFileSuccessRequest) returns (UpdateFileSuccessStatus); // Upload file to disk successfully
+  // todo update file available or not ?
   rpc changeFileDisk(ChangeFileDiskRequest) returns (ChangeFileDiskStatus); // Change file disk
 
   // Directories
@@ -163,3 +193,15 @@ service Maestro_Santaclaus_Service {
   rpc moveDirectory(MoveDirectoryRequest) returns (MoveDirectoryStatus); // Move a directory path
   rpc getDirectory(GetDirectoryRequest) returns (GetDirectoryStatus); // Get directory infos
 }
+
+// [x] addFile
+// [x] virtualRemoveFile
+// [x] physicalRemoveFile
+// [x] moveFile
+// [x] getFile
+// [x] updateFileSuccess
+// [] changeFileDisk
+// [x] addDirectory
+// [x] removeDirectory
+// [x] moveDirectory
+// [x] getDirectory
