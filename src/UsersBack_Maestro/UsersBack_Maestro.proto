@@ -50,11 +50,59 @@ message GetFilesIndexRequest {
 }
 
 /**
+ * File to be removed
+ */
+message FileRemoveRequest {
+  string fileId = 1;
+}
+
+message FileRemoveStatus {}
+
+/**
+ * File to be moved to another directory
+ */
+message FileMoveRequest {
+  string fileId = 1;
+  optional string dirPath = 2;
+  optional string newFileName = 3;
+}
+
+message FileMoveStatus {}
+
+message DirMakeRequest {
+  string dirPath = 1;
+}
+
+message DirMakeStatus {}
+
+message DirRemoveRequest {
+  string dirPath = 1;
+}
+
+message DirRemoveStatus {}
+
+message DirMoveRequest {
+  string dirPath = 1;
+  string newDirPath = 2;
+}
+
+message DirMoveStatus {}
+
+/**
  * Procedures from UsersBack to Maestro
  */
 service UsersBack_Maestro_Service {
+  // Files
   rpc fileUpload(FileUploadRequest) returns (FileUploadStatus); // Upload a file
   rpc askFileDownload(AskFileDownloadRequest) returns (AskFileDownloadStatus); // Ask to download a file
   rpc fileDownload(FileDownloadRequest) returns (File.File); // Download a file if already asked
+  rpc fileRemove(FileRemoveRequest) returns (FileRemoveStatus); // Delete an existing file
+  rpc fileMove(FileMoveRequest) returns (FileMoveStatus); // Change directory or name of an existing file
+
+  // Directories
+  rpc dirMake(DirMakeRequest) returns (DirMakeStatus); // Create directory
+  rpc dirRemove(DirRemoveRequest) returns (DirRemoveStatus); // Delete directory
+  rpc dirMove(DirMoveRequest) returns (DirMoveStatus); // Change position (or name) of an existing directory
+
   rpc getFilesIndex(GetFilesIndexRequest) returns (File.FilesIndex); // Get file list (ls)
 }
