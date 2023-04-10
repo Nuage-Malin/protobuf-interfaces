@@ -6,7 +6,17 @@
 - [UsersBack_Maestro/UsersBack_Maestro.proto](#UsersBack_Maestro_UsersBack_Maestro-proto)
     - [AskFileDownloadRequest](#UsersBack_Maestro-AskFileDownloadRequest)
     - [AskFileDownloadStatus](#UsersBack_Maestro-AskFileDownloadStatus)
+    - [DirMakeRequest](#UsersBack_Maestro-DirMakeRequest)
+    - [DirMakeStatus](#UsersBack_Maestro-DirMakeStatus)
+    - [DirMoveRequest](#UsersBack_Maestro-DirMoveRequest)
+    - [DirMoveStatus](#UsersBack_Maestro-DirMoveStatus)
+    - [DirRemoveRequest](#UsersBack_Maestro-DirRemoveRequest)
+    - [DirRemoveStatus](#UsersBack_Maestro-DirRemoveStatus)
     - [FileDownloadRequest](#UsersBack_Maestro-FileDownloadRequest)
+    - [FileMoveRequest](#UsersBack_Maestro-FileMoveRequest)
+    - [FileMoveStatus](#UsersBack_Maestro-FileMoveStatus)
+    - [FileRemoveRequest](#UsersBack_Maestro-FileRemoveRequest)
+    - [FileRemoveStatus](#UsersBack_Maestro-FileRemoveStatus)
     - [FileUploadRequest](#UsersBack_Maestro-FileUploadRequest)
     - [FileUploadStatus](#UsersBack_Maestro-FileUploadStatus)
     - [GetFilesIndexRequest](#UsersBack_Maestro-GetFilesIndexRequest)
@@ -17,13 +27,12 @@
   
     - [UsersBack_Maestro_Service](#UsersBack_Maestro-UsersBack_Maestro_Service)
   
-- [Maestro_HardwareMalin/Maestro_HardwareMalin.proto](#Maestro_HardwareMalin_Maestro_HardwareMalin-proto)
-    - [DiskStatusRequest](#Maestro_HardwareMalin-DiskStatusRequest)
-    - [DiskStatusStatus](#Maestro_HardwareMalin-DiskStatusStatus)
-    - [SetDiskStateRequest](#Maestro_HardwareMalin-SetDiskStateRequest)
-    - [SetDiskStateStatus](#Maestro_HardwareMalin-SetDiskStateStatus)
-  
-    - [Maestro_HardwareMalin_Service](#Maestro_HardwareMalin-Maestro_HardwareMalin_Service)
+- [common/File.proto](#common_File-proto)
+    - [File](#File-File)
+    - [FileApproxMetadata](#File-FileApproxMetadata)
+    - [FileMetadata](#File-FileMetadata)
+    - [FilesIndex](#File-FilesIndex)
+    - [NewFile](#File-NewFile)
   
 - [Maestro_Santaclaus/Maestro_Santaclaus.proto](#Maestro_Santaclaus_Maestro_Santaclaus-proto)
     - [AddDirectoryRequest](#Maestro_Santaclaus-AddDirectoryRequest)
@@ -60,12 +69,13 @@
   
     - [Maestro_Vault_Service](#Maestro_Vault-Maestro_Vault_Service)
   
-- [common/File.proto](#common_File-proto)
-    - [File](#File-File)
-    - [FileApproxMetadata](#File-FileApproxMetadata)
-    - [FileMetadata](#File-FileMetadata)
-    - [FilesIndex](#File-FilesIndex)
-    - [NewFile](#File-NewFile)
+- [Maestro_HardwareMalin/Maestro_HardwareMalin.proto](#Maestro_HardwareMalin_Maestro_HardwareMalin-proto)
+    - [DiskStatusRequest](#Maestro_HardwareMalin-DiskStatusRequest)
+    - [DiskStatusStatus](#Maestro_HardwareMalin-DiskStatusStatus)
+    - [SetDiskStateRequest](#Maestro_HardwareMalin-SetDiskStateRequest)
+    - [SetDiskStateStatus](#Maestro_HardwareMalin-SetDiskStateStatus)
+  
+    - [Maestro_HardwareMalin_Service](#Maestro_HardwareMalin-Maestro_HardwareMalin_Service)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -108,6 +118,82 @@ Time until which the file will be made available for download
 
 
 
+<a name="UsersBack_Maestro-DirMakeRequest"></a>
+
+### DirMakeRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| dirPath | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-DirMakeStatus"></a>
+
+### DirMakeStatus
+
+
+
+
+
+
+
+<a name="UsersBack_Maestro-DirMoveRequest"></a>
+
+### DirMoveRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| dirPath | [string](#string) |  |  |
+| newDirPath | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-DirMoveStatus"></a>
+
+### DirMoveStatus
+
+
+
+
+
+
+
+<a name="UsersBack_Maestro-DirRemoveRequest"></a>
+
+### DirRemoveRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| dirPath | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-DirRemoveStatus"></a>
+
+### DirRemoveStatus
+
+
+
+
+
+
+
 <a name="UsersBack_Maestro-FileDownloadRequest"></a>
 
 ### FileDownloadRequest
@@ -117,6 +203,58 @@ File id corresponding to the file to be downloaded
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | fileId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-FileMoveRequest"></a>
+
+### FileMoveRequest
+File to be moved to another directory
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+| dirPath | [string](#string) | optional |  |
+| newFileName | [string](#string) | optional |  |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-FileMoveStatus"></a>
+
+### FileMoveStatus
+
+
+
+
+
+
+
+<a name="UsersBack_Maestro-FileRemoveRequest"></a>
+
+### FileRemoveRequest
+File to be removed
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-FileRemoveStatus"></a>
+
+### FileRemoveStatus
+
 
 
 
@@ -246,9 +384,18 @@ Procedures from UsersBack to Maestro
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| fileUpload | [FileUploadRequest](#UsersBack_Maestro-FileUploadRequest) | [FileUploadStatus](#UsersBack_Maestro-FileUploadStatus) | Upload a file |
+| fileUpload | [FileUploadRequest](#UsersBack_Maestro-FileUploadRequest) | [FileUploadStatus](#UsersBack_Maestro-FileUploadStatus) | Files
+
+Upload a file |
 | askFileDownload | [AskFileDownloadRequest](#UsersBack_Maestro-AskFileDownloadRequest) | [AskFileDownloadStatus](#UsersBack_Maestro-AskFileDownloadStatus) | Ask to download a file |
 | fileDownload | [FileDownloadRequest](#UsersBack_Maestro-FileDownloadRequest) | [.File.File](#File-File) | Download a file if already asked |
+| fileRemove | [FileRemoveRequest](#UsersBack_Maestro-FileRemoveRequest) | [FileRemoveStatus](#UsersBack_Maestro-FileRemoveStatus) | Delete an existing file |
+| fileMove | [FileMoveRequest](#UsersBack_Maestro-FileMoveRequest) | [FileMoveStatus](#UsersBack_Maestro-FileMoveStatus) | Change directory or name of an existing file |
+| dirMake | [DirMakeRequest](#UsersBack_Maestro-DirMakeRequest) | [DirMakeStatus](#UsersBack_Maestro-DirMakeStatus) | Directories
+
+Create directory |
+| dirRemove | [DirRemoveRequest](#UsersBack_Maestro-DirRemoveRequest) | [DirRemoveStatus](#UsersBack_Maestro-DirRemoveStatus) | Delete directory |
+| dirMove | [DirMoveRequest](#UsersBack_Maestro-DirMoveRequest) | [DirMoveStatus](#UsersBack_Maestro-DirMoveStatus) | Change position (or name) of an existing directory |
 | getFilesIndex | [GetFilesIndexRequest](#UsersBack_Maestro-GetFilesIndexRequest) | [.File.FilesIndex](#File-FilesIndex) | Get file list (ls) |
 | getUserConsumption | [GetUserConsumptionRequest](#UsersBack_Maestro-GetUserConsumptionRequest) | [GetUserConsumptionStatus](#UsersBack_Maestro-GetUserConsumptionStatus) | Get users consumption on period |
 | getUserDiskSpace | [GetUserDiskSpaceRequest](#UsersBack_Maestro-GetUserDiskSpaceRequest) | [GetUserDiskSpaceStatus](#UsersBack_Maestro-GetUserDiskSpaceStatus) |  |
@@ -257,63 +404,91 @@ Procedures from UsersBack to Maestro
 
 
 
-<a name="Maestro_HardwareMalin_Maestro_HardwareMalin-proto"></a>
+<a name="common_File-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## Maestro_HardwareMalin/Maestro_HardwareMalin.proto
+## common/File.proto
 
 
 
-<a name="Maestro_HardwareMalin-DiskStatusRequest"></a>
+<a name="File-File"></a>
 
-### DiskStatusRequest
-Disk to ask
+### File
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| diskId | [string](#string) |  |  |
+| metadata | [FileMetadata](#File-FileMetadata) |  |  |
+| content | [bytes](#bytes) |  |  |
 
 
 
 
 
 
-<a name="Maestro_HardwareMalin-DiskStatusStatus"></a>
+<a name="File-FileApproxMetadata"></a>
 
-### DiskStatusStatus
-Response with disk status
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [bool](#bool) |  |  |
-
-
-
-
-
-
-<a name="Maestro_HardwareMalin-SetDiskStateRequest"></a>
-
-### SetDiskStateRequest
-Disk to wakeup or shutdown
+### FileApproxMetadata
+Metadata regarding a file itself and its location
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| diskId | [string](#string) |  |  |
-| state | [bool](#bool) |  |  |
+| name | [string](#string) |  | Filename | to be concatenated after dirname to find full absolute path |
+| dirPath | [string](#string) |  | Directory absolute path | to be concatenated before name to find full absolute path |
+| userId | [string](#string) |  | User identifier, generated by database | TODO clearly define userID globally |
 
 
 
 
 
 
-<a name="Maestro_HardwareMalin-SetDiskStateStatus"></a>
+<a name="File-FileMetadata"></a>
 
-### SetDiskStateStatus
+### FileMetadata
 
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| approxMetadata | [FileApproxMetadata](#File-FileApproxMetadata) |  |  |
+| fileId | [string](#string) |  | TODO clearly define fileID globally |
+| isDownloadable | [bool](#bool) |  |  |
+| lastEditorId | [string](#string) |  | TODO clearly define userID globally |
+| creation | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| lastEdit | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="File-FilesIndex"></a>
+
+### FilesIndex
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| index | [FileMetadata](#File-FileMetadata) | repeated |  |
+
+
+
+
+
+
+<a name="File-NewFile"></a>
+
+### NewFile
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| metadata | [FileApproxMetadata](#File-FileApproxMetadata) |  |  |
+| content | [bytes](#bytes) |  |  |
 
 
 
@@ -324,17 +499,6 @@ Disk to wakeup or shutdown
  
 
  
-
-
-<a name="Maestro_HardwareMalin-Maestro_HardwareMalin_Service"></a>
-
-### Maestro_HardwareMalin_Service
-Procedures from Maestro to HardwareMalin
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| diskStatus | [DiskStatusRequest](#Maestro_HardwareMalin-DiskStatusRequest) | [DiskStatusStatus](#Maestro_HardwareMalin-DiskStatusStatus) | Ask for disk status |
-| setDiskState | [SetDiskStateRequest](#Maestro_HardwareMalin-SetDiskStateRequest) | [SetDiskStateStatus](#Maestro_HardwareMalin-SetDiskStateStatus) |  |
 
  
 
@@ -801,91 +965,63 @@ Download a file |
 
 
 
-<a name="common_File-proto"></a>
+<a name="Maestro_HardwareMalin_Maestro_HardwareMalin-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## common/File.proto
+## Maestro_HardwareMalin/Maestro_HardwareMalin.proto
 
 
 
-<a name="File-File"></a>
+<a name="Maestro_HardwareMalin-DiskStatusRequest"></a>
 
-### File
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| metadata | [FileMetadata](#File-FileMetadata) |  |  |
-| content | [bytes](#bytes) |  |  |
-
-
-
-
-
-
-<a name="File-FileApproxMetadata"></a>
-
-### FileApproxMetadata
-Metadata regarding a file itself and its location
+### DiskStatusRequest
+Disk to ask
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  | Filename | to be concatenated after dirname to find full absolute path |
-| dirPath | [string](#string) |  | Directory absolute path | to be concatenated before name to find full absolute path |
-| userId | [string](#string) |  | User identifier, generated by database | TODO clearly define userID globally |
+| diskId | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="File-FileMetadata"></a>
+<a name="Maestro_HardwareMalin-DiskStatusStatus"></a>
 
-### FileMetadata
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| approxMetadata | [FileApproxMetadata](#File-FileApproxMetadata) |  |  |
-| fileId | [string](#string) |  | TODO clearly define fileID globally |
-| isDownloadable | [bool](#bool) |  |  |
-| lastEditorId | [string](#string) |  | TODO clearly define userID globally |
-| creation | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| lastEdit | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-
-
-
-
-
-
-<a name="File-FilesIndex"></a>
-
-### FilesIndex
-
+### DiskStatusStatus
+Response with disk status
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| index | [FileMetadata](#File-FileMetadata) | repeated |  |
+| status | [bool](#bool) |  |  |
 
 
 
 
 
 
-<a name="File-NewFile"></a>
+<a name="Maestro_HardwareMalin-SetDiskStateRequest"></a>
 
-### NewFile
-
+### SetDiskStateRequest
+Disk to wakeup or shutdown
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| metadata | [FileApproxMetadata](#File-FileApproxMetadata) |  |  |
-| content | [bytes](#bytes) |  |  |
+| diskId | [string](#string) |  |  |
+| state | [bool](#bool) |  |  |
+
+
+
+
+
+
+<a name="Maestro_HardwareMalin-SetDiskStateStatus"></a>
+
+### SetDiskStateStatus
+
 
 
 
@@ -896,6 +1032,17 @@ Metadata regarding a file itself and its location
  
 
  
+
+
+<a name="Maestro_HardwareMalin-Maestro_HardwareMalin_Service"></a>
+
+### Maestro_HardwareMalin_Service
+Procedures from Maestro to HardwareMalin
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| diskStatus | [DiskStatusRequest](#Maestro_HardwareMalin-DiskStatusRequest) | [DiskStatusStatus](#Maestro_HardwareMalin-DiskStatusStatus) | Ask for disk status |
+| setDiskState | [SetDiskStateRequest](#Maestro_HardwareMalin-SetDiskStateRequest) | [SetDiskStateStatus](#Maestro_HardwareMalin-SetDiskStateStatus) |  |
 
  
 
