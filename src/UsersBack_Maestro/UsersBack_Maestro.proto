@@ -3,6 +3,7 @@ syntax = "proto3";
 package UsersBack_Maestro;
 
 import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
 
 import "common/File.proto";
 
@@ -87,6 +88,27 @@ message DirMoveRequest {
 }
 
 message DirMoveStatus {}
+/* Users consumption on a period
+*/
+message GetUserConsumptionRequest {
+  string userId = 1;
+  google.protobuf.Timestamp startDate = 2; // Start date of the period
+  google.protobuf.Timestamp endDate = 3; // End date of the period
+}
+
+message GetUserConsumptionStatus {
+  uint64 consumption = 1;
+}
+
+message GetUserDiskSpaceRequest {
+  string userId = 1;
+  google.protobuf.Timestamp date = 2; // Date can be now or an older one
+}
+
+message GetUserDiskSpaceStatus {
+  uint64 totalDiskSpace = 1;
+  uint64 usedDiskSpace = 2;
+}
 
 /**
  * Procedures from UsersBack to Maestro
@@ -105,4 +127,6 @@ service UsersBack_Maestro_Service {
   rpc dirMove(DirMoveRequest) returns (DirMoveStatus); // Change position (or name) of an existing directory
 
   rpc getFilesIndex(GetFilesIndexRequest) returns (File.FilesIndex); // Get file list (ls)
+  rpc getUserConsumption(GetUserConsumptionRequest) returns (GetUserConsumptionStatus); // Get users consumption on period
+  rpc getUserDiskSpace(GetUserDiskSpaceRequest) returns (GetUserDiskSpaceStatus);
 }
