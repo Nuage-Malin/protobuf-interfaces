@@ -32,12 +32,29 @@ message UploadFilesStatus {
 }
 
 /**
- * File to download
+ * Download one file
  */
 message DownloadFileRequest {
   string fileId = 1;
   string userId = 2;
   string diskId = 3;
+}
+message DownloadFileStatus {
+  string content = 1;
+}
+
+/**
+ * Download multiple files
+ */
+message DownloadFilesRequest {
+  repeated DownloadFileRequest files = 1;
+}
+message DownloadFilesElemStatus {
+  string fileId = 1;
+  string content = 2;
+}
+message DownloadFilesStatus {
+  repeated DownloadFilesElemStatus files = 1;
 }
 
 /**
@@ -65,5 +82,6 @@ service Maestro_Vault_Service {
   rpc removeFiles(RemoveFilesRequest) returns (RemoveFilesStatus); // Remove multiple files
 
   // Download
-  rpc downloadFile(DownloadFileRequest) returns (DownloadFileRequest); // Download a file
+  rpc downloadFile(DownloadFileRequest) returns (DownloadFileStatus); // Download a file
+  rpc downloadFiles(DownloadFilesRequest) returns (DownloadFilesStatus); // Download multiple files
 }
