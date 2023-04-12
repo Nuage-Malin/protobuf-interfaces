@@ -5,7 +5,7 @@ package File;
 // Time
 import "google/protobuf/timestamp.proto";
 
-option go_package = "NuageMalin/File";
+option go_package = "./";
 
 /**
  * Metadata regarding a file itself and its location

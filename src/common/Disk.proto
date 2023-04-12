@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package Disk;
+
+option go_package = "./";
+
+message Disk {
+    string id = 1;
+    uint32 size = 2;
+    uint32 sizeAvailable = 3;
+}
+
+message Disks {
+    repeated Disk disks = 1;
+}
