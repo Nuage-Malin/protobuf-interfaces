@@ -9,7 +9,7 @@ message UploadFileRequest {
   string fileId = 1;
   string userId = 2;
   string diskId = 3;
-  string content = 4;
+  bytes content = 4;
 }
 
 /**
@@ -40,7 +40,7 @@ message DownloadFileRequest {
   string diskId = 3;
 }
 message DownloadFileStatus {
-  string content = 1;
+  bytes content = 1;
 }
 
 /**
@@ -51,7 +51,7 @@ message DownloadFilesRequest {
 }
 message DownloadFilesElemStatus {
   string fileId = 1;
-  string content = 2;
+  bytes content = 2;
 }
 message DownloadFilesStatus {
   repeated DownloadFilesElemStatus files = 1;
