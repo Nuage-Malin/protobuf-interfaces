@@ -126,8 +126,9 @@ message GetFileStatus {
  * Directory to get
  */
 message GetDirectoryRequest {
-  string dirId = 1;
-  bool isRecursive = 2;
+  optional string dirId = 1; // If not set, get root directory
+  string userId = 2;
+  bool isRecursive = 3;
 }
 
 /**

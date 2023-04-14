@@ -46,8 +46,9 @@ message FileDownloadRequest {
  * Information indicating what list of file should be provided
  */
 message GetFilesIndexRequest {
-  string dirPath = 1; // Absolute path to the directory containing files
-  string userId = 2; // User id of the user requesting files
+  optional string dirId = 1; // If not set, get root directory
+  string userId = 2;
+  bool isRecursive = 3;
 }
 
 /**
