@@ -50,6 +50,9 @@ message GetFilesIndexRequest {
   string userId = 2;
   bool isRecursive = 3;
 }
+message GetFilesIndexStatus {
+  File.FilesIndex subFiles = 1;
+}
 
 /**
  * File to be removed
@@ -127,7 +130,7 @@ service UsersBack_Maestro_Service {
   rpc dirRemove(DirRemoveRequest) returns (DirRemoveStatus); // Delete directory
   rpc dirMove(DirMoveRequest) returns (DirMoveStatus); // Change position (or name) of an existing directory
 
-  rpc getFilesIndex(GetFilesIndexRequest) returns (File.FilesIndex); // Get file list (ls)
+  rpc getFilesIndex(GetFilesIndexRequest) returns (GetFilesIndexStatus); // Get file list (ls)
   rpc getUserConsumption(GetUserConsumptionRequest) returns (GetUserConsumptionStatus); // Get users consumption on period
   rpc getUserDiskSpace(GetUserDiskSpaceRequest) returns (GetUserDiskSpaceStatus);
 }
