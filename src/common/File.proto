@@ -8,7 +8,7 @@ import "google/protobuf/timestamp.proto";
 option go_package = "./";
 
 /**
- * Metadata regarding a file itself and its location
+ * Metadata regarding a file/directory itself and its location
  */
 message FileApproxMetadata {
   string name = 1; // Filename | to be concatenated after dirname to find full absolute path
@@ -19,10 +19,20 @@ message FileApproxMetadata {
 message FileMetadata {
   FileApproxMetadata approxMetadata = 1;
   string fileId = 2; // TODO clearly define fileID globally
-  bool isDownloadable = 3;
-  string lastEditorId = 4; // TODO clearly define userID globally
-  google.protobuf.Timestamp creation = 5;
-  google.protobuf.Timestamp lastEdit = 6;
+  string dirId = 3; // TODO could do with a bool is Directory, to replace DirMetadata
+  bool isDownloadable = 4;
+  string lastEditorId = 5; // todo useless ? // TODO clearly define userID globally
+  google.protobuf.Timestamp creation = 6;
+  google.protobuf.Timestamp lastEdit = 7;
+}
+
+/**
+ * Metadata identifying a directory
+ * Could be replaced by having only a 'isDirectory' field in FileMetadata, making it a File/DirMetadata
+ */
+message DirMetadata {
+  FileApproxMetadata approxMetadata = 1;
+  string dirId = 2;
 }
 
 message File {
@@ -36,5 +46,6 @@ message NewFile {
 }
 
 message FilesIndex {
-  repeated FileMetadata index = 1;
+  repeated FileMetadata fileIndex = 1;
+  repeated DirMetadata dirIndex = 2;
 }

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package Santaclaus_HardwareMalin;
 
-import "common/File.proto";
+// import "common/File.proto";
 import "common/Disk.proto";
 
 option go_package = "./";
@@ -12,11 +12,12 @@ option go_package = "./";
  */
 message GetDisksRequest {
 }
+
 /**
  * Get all possible disks
  */
 message GetDisksStatus {
-    Disk.Disks disks = 1;
+    repeated Disk.Disk disks = 1;
 }
 
 
