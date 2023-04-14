@@ -20,6 +20,7 @@
     - [FileUploadRequest](#UsersBack_Maestro-FileUploadRequest)
     - [FileUploadStatus](#UsersBack_Maestro-FileUploadStatus)
     - [GetFilesIndexRequest](#UsersBack_Maestro-GetFilesIndexRequest)
+    - [GetFilesIndexStatus](#UsersBack_Maestro-GetFilesIndexStatus)
     - [GetUserConsumptionRequest](#UsersBack_Maestro-GetUserConsumptionRequest)
     - [GetUserConsumptionStatus](#UsersBack_Maestro-GetUserConsumptionStatus)
     - [GetUserDiskSpaceRequest](#UsersBack_Maestro-GetUserDiskSpaceRequest)
@@ -28,6 +29,7 @@
     - [UsersBack_Maestro_Service](#UsersBack_Maestro-UsersBack_Maestro_Service)
   
 - [common/File.proto](#common_File-proto)
+    - [DirMetadata](#File-DirMetadata)
     - [File](#File-File)
     - [FileApproxMetadata](#File-FileApproxMetadata)
     - [FileMetadata](#File-FileMetadata)
@@ -36,7 +38,6 @@
   
 - [common/Disk.proto](#common_Disk-proto)
     - [Disk](#Disk-Disk)
-    - [Disks](#Disk-Disks)
   
 - [Santaclaus_HardwareMalin/Santaclaus_HardwareMalin.proto](#Santaclaus_HardwareMalin_Santaclaus_HardwareMalin-proto)
     - [GetDisksRequest](#Santaclaus_HardwareMalin-GetDisksRequest)
@@ -63,6 +64,8 @@
     - [RemoveDirectoryStatus](#Maestro_Santaclaus-RemoveDirectoryStatus)
     - [RemoveFileRequest](#Maestro_Santaclaus-RemoveFileRequest)
     - [RemoveFileStatus](#Maestro_Santaclaus-RemoveFileStatus)
+    - [RemoveFilesRequest](#Maestro_Santaclaus-RemoveFilesRequest)
+    - [RemoveFilesStatus](#Maestro_Santaclaus-RemoveFilesStatus)
     - [UpdateFileSuccessRequest](#Maestro_Santaclaus-UpdateFileSuccessRequest)
     - [UpdateFileSuccessStatus](#Maestro_Santaclaus-UpdateFileSuccessStatus)
   
@@ -313,8 +316,24 @@ Information indicating what list of file should be provided
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| dirPath | [string](#string) |  | Absolute path to the directory containing files |
-| userId | [string](#string) |  | User id of the user requesting files |
+| dirId | [string](#string) | optional | If not set, get root directory |
+| userId | [string](#string) |  |  |
+| isRecursive | [bool](#bool) |  |  |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-GetFilesIndexStatus"></a>
+
+### GetFilesIndexStatus
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| subFiles | [File.FilesIndex](#File-FilesIndex) |  |  |
 
 
 
@@ -410,7 +429,7 @@ Upload a file |
 Create directory |
 | dirRemove | [DirRemoveRequest](#UsersBack_Maestro-DirRemoveRequest) | [DirRemoveStatus](#UsersBack_Maestro-DirRemoveStatus) | Delete directory |
 | dirMove | [DirMoveRequest](#UsersBack_Maestro-DirMoveRequest) | [DirMoveStatus](#UsersBack_Maestro-DirMoveStatus) | Change position (or name) of an existing directory |
-| getFilesIndex | [GetFilesIndexRequest](#UsersBack_Maestro-GetFilesIndexRequest) | [.File.FilesIndex](#File-FilesIndex) | Get file list (ls) |
+| getFilesIndex | [GetFilesIndexRequest](#UsersBack_Maestro-GetFilesIndexRequest) | [GetFilesIndexStatus](#UsersBack_Maestro-GetFilesIndexStatus) | Get file list (ls) |
 | getUserConsumption | [GetUserConsumptionRequest](#UsersBack_Maestro-GetUserConsumptionRequest) | [GetUserConsumptionStatus](#UsersBack_Maestro-GetUserConsumptionStatus) | Get users consumption on period |
 | getUserDiskSpace | [GetUserDiskSpaceRequest](#UsersBack_Maestro-GetUserDiskSpaceRequest) | [GetUserDiskSpaceStatus](#UsersBack_Maestro-GetUserDiskSpaceStatus) |  |
 
@@ -422,6 +441,23 @@ Create directory |
 <p align="right"><a href="#top">Top</a></p>
 
 ## common/File.proto
+
+
+
+<a name="File-DirMetadata"></a>
+
+### DirMetadata
+Metadata identifying a directory
+Could be replaced by having only a &#39;isDirectory&#39; field in FileMetadata, making it a File/DirMetadata
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| approxMetadata | [FileApproxMetadata](#File-FileApproxMetadata) |  |  |
+| dirId | [string](#string) |  |  |
+
+
+
 
 
 
@@ -444,7 +480,7 @@ Create directory |
 <a name="File-FileApproxMetadata"></a>
 
 ### FileApproxMetadata
-Metadata regarding a file itself and its location
+Metadata regarding a file/directory itself and its location
 
 
 | Field | Type | Label | Description |
@@ -468,8 +504,9 @@ Metadata regarding a file itself and its location
 | ----- | ---- | ----- | ----------- |
 | approxMetadata | [FileApproxMetadata](#File-FileApproxMetadata) |  |  |
 | fileId | [string](#string) |  | TODO clearly define fileID globally |
+| dirId | [string](#string) |  | TODO could do with a bool is Directory, to replace DirMetadata |
 | isDownloadable | [bool](#bool) |  |  |
-| lastEditorId | [string](#string) |  | TODO clearly define userID globally |
+| lastEditorId | [string](#string) |  | todo useless ? // TODO clearly define userID globally |
 | creation | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | lastEdit | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -486,7 +523,8 @@ Metadata regarding a file itself and its location
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| index | [FileMetadata](#File-FileMetadata) | repeated |  |
+| fileIndex | [FileMetadata](#File-FileMetadata) | repeated |  |
+| dirIndex | [DirMetadata](#File-DirMetadata) | repeated |  |
 
 
 
@@ -533,24 +571,7 @@ Metadata regarding a file itself and its location
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| size | [uint32](#uint32) |  |  |
-| sizeAvailable | [uint32](#uint32) |  |  |
-
-
-
-
-
-
-<a name="Disk-Disks"></a>
-
-### Disks
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| disks | [Disk](#Disk-Disk) | repeated |  |
+| id | [string](#string) |  | uint32 size = 2; uint32 sizeAvailable = 3; |
 
 
 
@@ -591,7 +612,7 @@ Get all possible disks
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| disks | [Disk.Disks](#Disk-Disks) |  |  |
+| disks | [Disk.Disk](#Disk-Disk) | repeated |  |
 
 
 
@@ -634,7 +655,7 @@ Directory to add to the index
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| dirPath | [string](#string) |  |  |
+| directory | [File.FileApproxMetadata](#File-FileApproxMetadata) |  | todo add directory id of parent instead of path |
 
 
 
@@ -665,7 +686,7 @@ File to upload to the index
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | file | [File.FileApproxMetadata](#File-FileApproxMetadata) |  |  |
-| fileSize | [uint64](#uint64) |  |  |
+| fileSize | [uint64](#uint64) |  | todo put dir id |
 
 
 
@@ -726,7 +747,8 @@ Directory to get
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| dirId | [string](#string) |  |  |
+| dirId | [string](#string) | optional | If not set, get root directory |
+| userId | [string](#string) |  |  |
 | isRecursive | [bool](#bool) |  |  |
 
 
@@ -742,7 +764,7 @@ Directory infos
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| files | [GetFileStatus](#Maestro_Santaclaus-GetFileStatus) | repeated |  |
+| subFiles | [File.FilesIndex](#File-FilesIndex) |  |  |
 
 
 
@@ -772,8 +794,8 @@ File infos
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| file | [File.FileApproxMetadata](#File-FileApproxMetadata) |  |  |
-| diskId | [string](#string) |  |  |
+| file | [File.FileMetadata](#File-FileMetadata) |  |  |
+| diskId | [string](#string) |  | todo time before availability ? |
 
 
 
@@ -789,7 +811,8 @@ Directory to move
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | dirId | [string](#string) |  |  |
-| dirPath | [string](#string) |  |  |
+| name | [string](#string) |  | string dirPath = 2; |
+| newLocationDirId | [string](#string) |  |  |
 
 
 
@@ -815,7 +838,8 @@ File to move
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | fileId | [string](#string) |  |  |
-| filepath | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+| dirId | [string](#string) |  | string filepath = 2; // old // todo remove ? |
 
 
 
@@ -853,6 +877,11 @@ Directory to remove from the index
 Directory removed infos
 
 
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileIdsToRemove | [string](#string) | repeated |  |
+
+
 
 
 
@@ -876,6 +905,31 @@ File to remove from the index
 
 ### RemoveFileStatus
 File removed infos
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-RemoveFilesRequest"></a>
+
+### RemoveFilesRequest
+Files to remove from the index
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileIds | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-RemoveFilesStatus"></a>
+
+### RemoveFilesStatus
+Files removed infos
 
 
 
@@ -925,11 +979,17 @@ Procedures from Maestro to Santaclaus
 
 Add a file to the index |
 | virtualRemoveFile | [RemoveFileRequest](#Maestro_Santaclaus-RemoveFileRequest) | [RemoveFileStatus](#Maestro_Santaclaus-RemoveFileStatus) | Remove file virtualy from the DB (not on disks) |
+| virtualRemoveFiles | [RemoveFilesRequest](#Maestro_Santaclaus-RemoveFilesRequest) | [RemoveFilesStatus](#Maestro_Santaclaus-RemoveFilesStatus) | Remove files virtualy from the DB (not on disks) |
 | physicalRemoveFile | [RemoveFileRequest](#Maestro_Santaclaus-RemoveFileRequest) | [RemoveFileStatus](#Maestro_Santaclaus-RemoveFileStatus) | Remove file physically from the file system |
+| physicalRemoveFiles | [RemoveFilesRequest](#Maestro_Santaclaus-RemoveFilesRequest) | [RemoveFilesStatus](#Maestro_Santaclaus-RemoveFilesStatus) | Remove file physically from the file system |
 | moveFile | [MoveFileRequest](#Maestro_Santaclaus-MoveFileRequest) | [MoveFileStatus](#Maestro_Santaclaus-MoveFileStatus) | Move filepath |
 | getFile | [GetFileRequest](#Maestro_Santaclaus-GetFileRequest) | [GetFileStatus](#Maestro_Santaclaus-GetFileStatus) | Get file infos |
-| updateFileSuccess | [UpdateFileSuccessRequest](#Maestro_Santaclaus-UpdateFileSuccessRequest) | [UpdateFileSuccessStatus](#Maestro_Santaclaus-UpdateFileSuccessStatus) | Upload file to disk successfully |
-| changeFileDisk | [ChangeFileDiskRequest](#Maestro_Santaclaus-ChangeFileDiskRequest) | [ChangeFileDiskStatus](#Maestro_Santaclaus-ChangeFileDiskStatus) | Change file disk |
+| updateFileSuccess | [UpdateFileSuccessRequest](#Maestro_Santaclaus-UpdateFileSuccessRequest) | [UpdateFileSuccessStatus](#Maestro_Santaclaus-UpdateFileSuccessStatus) | todo set file downloadable
+
+Upload file to disk successfully |
+| changeFileDisk | [ChangeFileDiskRequest](#Maestro_Santaclaus-ChangeFileDiskRequest) | [ChangeFileDiskStatus](#Maestro_Santaclaus-ChangeFileDiskStatus) | todo update file available or not ?
+
+Change file disk |
 | addDirectory | [AddDirectoryRequest](#Maestro_Santaclaus-AddDirectoryRequest) | [AddDirectoryStatus](#Maestro_Santaclaus-AddDirectoryStatus) | Directories
 
 Add a directory to the index |
