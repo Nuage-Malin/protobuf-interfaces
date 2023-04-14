@@ -34,6 +34,16 @@
     - [FilesIndex](#File-FilesIndex)
     - [NewFile](#File-NewFile)
   
+- [common/Disk.proto](#common_Disk-proto)
+    - [Disk](#Disk-Disk)
+    - [Disks](#Disk-Disks)
+  
+- [Santaclaus_HardwareMalin/Santaclaus_HardwareMalin.proto](#Santaclaus_HardwareMalin_Santaclaus_HardwareMalin-proto)
+    - [GetDisksRequest](#Santaclaus_HardwareMalin-GetDisksRequest)
+    - [GetDisksStatus](#Santaclaus_HardwareMalin-GetDisksStatus)
+  
+    - [Santaclaus_HardwareMalin_Service](#Santaclaus_HardwareMalin-Santaclaus_HardwareMalin_Service)
+  
 - [Maestro_Santaclaus/Maestro_Santaclaus.proto](#Maestro_Santaclaus_Maestro_Santaclaus-proto)
     - [AddDirectoryRequest](#Maestro_Santaclaus-AddDirectoryRequest)
     - [AddDirectoryStatus](#Maestro_Santaclaus-AddDirectoryStatus)
@@ -60,6 +70,10 @@
   
 - [Maestro_Vault/Maestro_Vault.proto](#Maestro_Vault_Maestro_Vault-proto)
     - [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest)
+    - [DownloadFileStatus](#Maestro_Vault-DownloadFileStatus)
+    - [DownloadFilesElemStatus](#Maestro_Vault-DownloadFilesElemStatus)
+    - [DownloadFilesRequest](#Maestro_Vault-DownloadFilesRequest)
+    - [DownloadFilesStatus](#Maestro_Vault-DownloadFilesStatus)
     - [RemoveFilesRequest](#Maestro_Vault-RemoveFilesRequest)
     - [RemoveFilesStatus](#Maestro_Vault-RemoveFilesStatus)
     - [UploadFileRequest](#Maestro_Vault-UploadFileRequest)
@@ -504,6 +518,107 @@ Metadata regarding a file itself and its location
 
 
 
+<a name="common_Disk-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## common/Disk.proto
+
+
+
+<a name="Disk-Disk"></a>
+
+### Disk
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| size | [uint32](#uint32) |  |  |
+| sizeAvailable | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="Disk-Disks"></a>
+
+### Disks
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| disks | [Disk](#Disk-Disk) | repeated |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="Santaclaus_HardwareMalin_Santaclaus_HardwareMalin-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## Santaclaus_HardwareMalin/Santaclaus_HardwareMalin.proto
+
+
+
+<a name="Santaclaus_HardwareMalin-GetDisksRequest"></a>
+
+### GetDisksRequest
+Get all possible disks
+
+
+
+
+
+
+<a name="Santaclaus_HardwareMalin-GetDisksStatus"></a>
+
+### GetDisksStatus
+Get all possible disks
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| disks | [Disk.Disks](#Disk-Disks) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="Santaclaus_HardwareMalin-Santaclaus_HardwareMalin_Service"></a>
+
+### Santaclaus_HardwareMalin_Service
+Procedures from Maestro to Santaclaus
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| getDisks | [GetDisksRequest](#Santaclaus_HardwareMalin-GetDisksRequest) | [GetDisksStatus](#Santaclaus_HardwareMalin-GetDisksStatus) | Files
+
+Get all possible disks |
+
+ 
+
+
+
 <a name="Maestro_Santaclaus_Maestro_Santaclaus-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -836,7 +951,7 @@ Add a directory to the index |
 <a name="Maestro_Vault-DownloadFileRequest"></a>
 
 ### DownloadFileRequest
-File to download
+Download one file
 
 
 | Field | Type | Label | Description |
@@ -844,6 +959,67 @@ File to download
 | fileId | [string](#string) |  |  |
 | userId | [string](#string) |  |  |
 | diskId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-DownloadFileStatus"></a>
+
+### DownloadFileStatus
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| content | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-DownloadFilesElemStatus"></a>
+
+### DownloadFilesElemStatus
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+| content | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-DownloadFilesRequest"></a>
+
+### DownloadFilesRequest
+Download multiple files
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| files | [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest) | repeated |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-DownloadFilesStatus"></a>
+
+### DownloadFilesStatus
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| files | [DownloadFilesElemStatus](#Maestro_Vault-DownloadFilesElemStatus) | repeated |  |
 
 
 
@@ -892,7 +1068,7 @@ File to upload
 | fileId | [string](#string) |  |  |
 | userId | [string](#string) |  |  |
 | diskId | [string](#string) |  |  |
-| content | [string](#string) |  |  |
+| content | [bytes](#bytes) |  |  |
 
 
 
@@ -957,9 +1133,10 @@ Procedures from Maestro to Vault
 Upload a file |
 | uploadFiles | [UploadFilesRequest](#Maestro_Vault-UploadFilesRequest) | [UploadFilesStatus](#Maestro_Vault-UploadFilesStatus) | Upload multiple files |
 | removeFiles | [RemoveFilesRequest](#Maestro_Vault-RemoveFilesRequest) | [RemoveFilesStatus](#Maestro_Vault-RemoveFilesStatus) | Remove multiple files |
-| downloadFile | [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest) | [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest) | Download
+| downloadFile | [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest) | [DownloadFileStatus](#Maestro_Vault-DownloadFileStatus) | Download
 
 Download a file |
+| downloadFiles | [DownloadFilesRequest](#Maestro_Vault-DownloadFilesRequest) | [DownloadFilesStatus](#Maestro_Vault-DownloadFilesStatus) | Download multiple files |
 
  
 
