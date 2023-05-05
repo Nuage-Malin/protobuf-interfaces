@@ -68,9 +68,10 @@ message FileRemoveStatus {}
  */
 message FileMoveRequest {
   string fileId = 1;
-  optional string dirPath = 2;
   optional string newFileName = 3;
+  optional string dirId = 2;
 }
+
 
 message FileMoveStatus {}
 
@@ -81,14 +82,15 @@ message DirMakeRequest {
 message DirMakeStatus {}
 
 message DirRemoveRequest {
-  string dirPath = 1;
+  string dirId = 1;
 }
 
 message DirRemoveStatus {}
 
 message DirMoveRequest {
-  string dirPath = 1;
-  string newDirPath = 2;
+  string dirId = 1; // Dir to be moved
+  optional string name = 2; // If specified : New Name
+  optional string newLocationDirId = 3; // If specified : DirId to store this dir in (aka new parent dir)
 }
 
 message DirMoveStatus {}
