@@ -64,6 +64,17 @@ message FileRemoveRequest {
 message FileRemoveStatus {}
 
 /**
+ * File to be removed
+ */
+message FilesRemoveRequest {
+  repeated string fileId = 1;
+}
+
+message FilesRemoveStatus {
+  repeated string fileIdFailures = 1;
+}
+
+/**
  * File to be moved to another directory
  */
 message FileMoveRequest {
@@ -125,6 +136,7 @@ service UsersBack_Maestro_Service {
   rpc askFileDownload(AskFileDownloadRequest) returns (AskFileDownloadStatus); // Ask to download a file
   rpc fileDownload(FileDownloadRequest) returns (File.File); // Download a file if already asked
   rpc fileRemove(FileRemoveRequest) returns (FileRemoveStatus); // Delete an existing file
+  rpc filesRemove(FilesRemoveRequest) returns (FilesRemoveStatus); // Delete an existing file
   rpc fileMove(FileMoveRequest) returns (FileMoveStatus); // Change directory or name of an existing file
 
   // Directories
