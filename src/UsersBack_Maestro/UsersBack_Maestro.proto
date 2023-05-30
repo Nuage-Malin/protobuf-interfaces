@@ -106,7 +106,7 @@ message GetUserConsumptionStatus {
 
 message GetUserDiskSpaceRequest {
   string userId = 1;
-  google.protobuf.Timestamp date = 2; // Date can be now or an older one
+  optional google.protobuf.Timestamp date = 2; // Date can be now or an older one (default as now)
 }
 
 message GetUserDiskSpaceStatus {
