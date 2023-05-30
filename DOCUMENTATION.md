@@ -1176,7 +1176,7 @@ Users consumption on a period
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | userId | [string](#string) |  |  |
-| date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | Date can be now or an older one |
+| date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional | Date can be now or an older one (default as now) |
 
 
 
