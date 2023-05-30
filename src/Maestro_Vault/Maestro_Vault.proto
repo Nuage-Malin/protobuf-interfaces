@@ -60,6 +60,19 @@ message DownloadFilesStatus {
 /**
  * Files to remove
  */
+message RemoveFileRequest {
+  string fileId = 1;
+  string diskId = 3;
+}
+
+/**
+ * Remove result
+ */
+message RemoveFileStatus {}
+
+/**
+ * Files to remove
+ */
 message RemoveFilesRequest {
   repeated string fileId = 1;
   string diskId = 3;
@@ -79,6 +92,7 @@ service Maestro_Vault_Service {
   // Upload
   rpc uploadFile(UploadFileRequest) returns (UploadFileStatus); // Upload a file
   rpc uploadFiles(UploadFilesRequest) returns (UploadFilesStatus); // Upload multiple files
+  rpc removeFile(RemoveFileRequest) returns (RemoveFileStatus); // Remove multiple files
   rpc removeFiles(RemoveFilesRequest) returns (RemoveFilesStatus); // Remove multiple files
 
   // Download

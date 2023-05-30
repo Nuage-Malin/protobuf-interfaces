@@ -64,13 +64,25 @@ message FileRemoveRequest {
 message FileRemoveStatus {}
 
 /**
+ * File to be removed
+ */
+message FilesRemoveRequest {
+  repeated string fileId = 1;
+}
+
+message FilesRemoveStatus {
+  repeated string fileIdFailures = 1;
+}
+
+/**
  * File to be moved to another directory
  */
 message FileMoveRequest {
   string fileId = 1;
-  optional string dirPath = 2;
   optional string newFileName = 3;
+  optional string dirId = 2;
 }
+
 
 message FileMoveStatus {}
 
@@ -81,14 +93,15 @@ message DirMakeRequest {
 message DirMakeStatus {}
 
 message DirRemoveRequest {
-  string dirPath = 1;
+  string dirId = 1;
 }
 
 message DirRemoveStatus {}
 
 message DirMoveRequest {
-  string dirPath = 1;
-  string newDirPath = 2;
+  string dirId = 1; // Dir to be moved
+  optional string name = 2; // If specified : New Name
+  optional string newLocationDirId = 3; // If specified : DirId to store this dir in (aka new parent dir)
 }
 
 message DirMoveStatus {}
@@ -123,6 +136,7 @@ service UsersBack_Maestro_Service {
   rpc askFileDownload(AskFileDownloadRequest) returns (AskFileDownloadStatus); // Ask to download a file
   rpc fileDownload(FileDownloadRequest) returns (File.File); // Download a file if already asked
   rpc fileRemove(FileRemoveRequest) returns (FileRemoveStatus); // Delete an existing file
+  rpc filesRemove(FilesRemoveRequest) returns (FilesRemoveStatus); // Delete an existing file
   rpc fileMove(FileMoveRequest) returns (FileMoveStatus); // Change directory or name of an existing file
 
   // Directories

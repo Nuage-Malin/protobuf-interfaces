@@ -52,9 +52,8 @@ message RemoveFilesStatus {}
  */
 message MoveFileRequest {
   string fileId = 1;
-  string name = 2;
-  string dirId = 3;
-  // string filepath = 2; // old // todo remove ?
+  optional string newFileName = 3;
+  optional string dirId = 2;
 }
 
 /**
@@ -95,10 +94,9 @@ message RemoveDirectoryStatus {
  * Directory to move
  */
 message MoveDirectoryRequest {
-  string dirId = 1;
-  // string dirPath = 2;
-  string name = 2;
-  string newLocationDirId = 3;
+  string dirId = 1; // Dir to be moved
+  optional string name = 2; // If specified : New Name
+  optional string newLocationDirId = 3; // If specified : DirId to store this dir in (aka new parent dir)
 }
 
 /**
