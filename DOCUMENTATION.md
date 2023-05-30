@@ -54,6 +54,8 @@
     - [DownloadFilesElemStatus](#Maestro_Vault-DownloadFilesElemStatus)
     - [DownloadFilesRequest](#Maestro_Vault-DownloadFilesRequest)
     - [DownloadFilesStatus](#Maestro_Vault-DownloadFilesStatus)
+    - [RemoveFileRequest](#Maestro_Vault-RemoveFileRequest)
+    - [RemoveFileStatus](#Maestro_Vault-RemoveFileStatus)
     - [RemoveFilesRequest](#Maestro_Vault-RemoveFilesRequest)
     - [RemoveFilesStatus](#Maestro_Vault-RemoveFilesStatus)
     - [UploadFileRequest](#Maestro_Vault-UploadFileRequest)
@@ -79,6 +81,8 @@
     - [FileRemoveStatus](#UsersBack_Maestro-FileRemoveStatus)
     - [FileUploadRequest](#UsersBack_Maestro-FileUploadRequest)
     - [FileUploadStatus](#UsersBack_Maestro-FileUploadStatus)
+    - [FilesRemoveRequest](#UsersBack_Maestro-FilesRemoveRequest)
+    - [FilesRemoveStatus](#UsersBack_Maestro-FilesRemoveStatus)
     - [GetFilesIndexRequest](#UsersBack_Maestro-GetFilesIndexRequest)
     - [GetFilesIndexStatus](#UsersBack_Maestro-GetFilesIndexStatus)
     - [GetUserConsumptionRequest](#UsersBack_Maestro-GetUserConsumptionRequest)
@@ -418,9 +422,9 @@ Directory to move
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| dirId | [string](#string) |  |  |
-| name | [string](#string) |  | string dirPath = 2; |
-| newLocationDirId | [string](#string) |  |  |
+| dirId | [string](#string) |  | Dir to be moved |
+| name | [string](#string) | optional | If specified : New Name |
+| newLocationDirId | [string](#string) | optional | If specified : DirId to store this dir in (aka new parent dir) |
 
 
 
@@ -446,8 +450,8 @@ File to move
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | fileId | [string](#string) |  |  |
-| name | [string](#string) |  |  |
-| dirId | [string](#string) |  | string filepath = 2; // old // todo remove ? |
+| newFileName | [string](#string) | optional |  |
+| dirId | [string](#string) | optional |  |
 
 
 
@@ -777,6 +781,32 @@ Download multiple files
 
 
 
+<a name="Maestro_Vault-RemoveFileRequest"></a>
+
+### RemoveFileRequest
+Files to remove
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+| diskId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-RemoveFileStatus"></a>
+
+### RemoveFileStatus
+Remove result
+
+
+
+
+
+
 <a name="Maestro_Vault-RemoveFilesRequest"></a>
 
 ### RemoveFilesRequest
@@ -883,6 +913,7 @@ Procedures from Maestro to Vault
 
 Upload a file |
 | uploadFiles | [UploadFilesRequest](#Maestro_Vault-UploadFilesRequest) | [UploadFilesStatus](#Maestro_Vault-UploadFilesStatus) | Upload multiple files |
+| removeFile | [RemoveFileRequest](#Maestro_Vault-RemoveFileRequest) | [RemoveFileStatus](#Maestro_Vault-RemoveFileStatus) | Remove multiple files |
 | removeFiles | [RemoveFilesRequest](#Maestro_Vault-RemoveFilesRequest) | [RemoveFilesStatus](#Maestro_Vault-RemoveFilesStatus) | Remove multiple files |
 | downloadFile | [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest) | [DownloadFileStatus](#Maestro_Vault-DownloadFileStatus) | Download
 
@@ -963,8 +994,9 @@ Time until which the file will be made available for download
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| dirPath | [string](#string) |  |  |
-| newDirPath | [string](#string) |  |  |
+| dirId | [string](#string) |  | Dir to be moved |
+| name | [string](#string) | optional | If specified : New Name |
+| newLocationDirId | [string](#string) | optional | If specified : DirId to store this dir in (aka new parent dir) |
 
 
 
@@ -989,7 +1021,7 @@ Time until which the file will be made available for download
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| dirPath | [string](#string) |  |  |
+| dirId | [string](#string) |  |  |
 
 
 
@@ -1030,8 +1062,8 @@ File to be moved to another directory
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | fileId | [string](#string) |  |  |
-| dirPath | [string](#string) | optional |  |
 | newFileName | [string](#string) | optional |  |
+| dirId | [string](#string) | optional |  |
 
 
 
@@ -1097,6 +1129,36 @@ Response from the server after uploading a file, status is known through return 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | fileId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-FilesRemoveRequest"></a>
+
+### FilesRemoveRequest
+File to be removed
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-FilesRemoveStatus"></a>
+
+### FilesRemoveStatus
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileIdFailures | [string](#string) | repeated |  |
 
 
 
@@ -1218,6 +1280,7 @@ Upload a file |
 | askFileDownload | [AskFileDownloadRequest](#UsersBack_Maestro-AskFileDownloadRequest) | [AskFileDownloadStatus](#UsersBack_Maestro-AskFileDownloadStatus) | Ask to download a file |
 | fileDownload | [FileDownloadRequest](#UsersBack_Maestro-FileDownloadRequest) | [.File.File](#File-File) | Download a file if already asked |
 | fileRemove | [FileRemoveRequest](#UsersBack_Maestro-FileRemoveRequest) | [FileRemoveStatus](#UsersBack_Maestro-FileRemoveStatus) | Delete an existing file |
+| filesRemove | [FilesRemoveRequest](#UsersBack_Maestro-FilesRemoveRequest) | [FilesRemoveStatus](#UsersBack_Maestro-FilesRemoveStatus) | Delete an existing file |
 | fileMove | [FileMoveRequest](#UsersBack_Maestro-FileMoveRequest) | [FileMoveStatus](#UsersBack_Maestro-FileMoveStatus) | Change directory or name of an existing file |
 | dirMake | [DirMakeRequest](#UsersBack_Maestro-DirMakeRequest) | [DirMakeStatus](#UsersBack_Maestro-DirMakeStatus) | Directories
 
