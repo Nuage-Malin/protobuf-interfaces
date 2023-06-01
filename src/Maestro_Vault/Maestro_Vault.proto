@@ -62,6 +62,7 @@ message DownloadFilesStatus {
  */
 message RemoveFileRequest {
   string fileId = 1;
+  string userId = 2;
   string diskId = 3;
 }
 
@@ -75,6 +76,7 @@ message RemoveFileStatus {}
  */
 message RemoveFilesRequest {
   repeated string fileId = 1;
+  string userId = 2;
   string diskId = 3;
 }
 
