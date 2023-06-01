@@ -76,7 +76,7 @@ message RemoveFileStatus {}
  */
 message RemoveFilesRequest {
   repeated string fileId = 1;
-  string userId = 3;
+  string userId = 2;
   string diskId = 3;
 }
 
