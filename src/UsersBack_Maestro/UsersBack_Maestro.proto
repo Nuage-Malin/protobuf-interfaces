@@ -87,10 +87,12 @@ message FileMoveRequest {
 message FileMoveStatus {}
 
 message DirMakeRequest {
-  string dirPath = 1;
+  File.FileApproxMetadata directory = 1;
 }
 
-message DirMakeStatus {}
+message DirMakeStatus {
+  string dirId = 1;
+}
 
 message DirRemoveRequest {
   string dirId = 1;
