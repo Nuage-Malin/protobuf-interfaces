@@ -790,6 +790,7 @@ Files to remove
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | fileId | [string](#string) |  |  |
+| userId | [string](#string) |  |  |
 | diskId | [string](#string) |  |  |
 
 
@@ -816,6 +817,7 @@ Files to remove
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | fileId | [string](#string) | repeated |  |
+| userId | [string](#string) |  |  |
 | diskId | [string](#string) |  |  |
 
 
@@ -969,7 +971,7 @@ Time until which the file will be made available for download
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| dirPath | [string](#string) |  |  |
+| directory | [File.FileApproxMetadata](#File-FileApproxMetadata) |  |  |
 
 
 
@@ -980,6 +982,11 @@ Time until which the file will be made available for download
 
 ### DirMakeStatus
 
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| dirId | [string](#string) |  |  |
 
 
 
