@@ -111,8 +111,8 @@ message DirMoveStatus {}
 */
 message GetUserConsumptionRequest {
   string userId = 1;
-  google.protobuf.Timestamp startDate = 2; // Start date of the period
-  google.protobuf.Timestamp endDate = 3; // End date of the period
+  optional google.protobuf.Timestamp startDate = 2; // Start date of the period
+  optional google.protobuf.Timestamp endDate = 3; // End date of the period (default as now)
 }
 
 message GetUserConsumptionStatus {
