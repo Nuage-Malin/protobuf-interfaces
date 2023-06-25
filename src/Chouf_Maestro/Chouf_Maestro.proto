@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package Chouf_Maestro;
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+import "common/Cron.proto";
+
+// Get global CRON status
+message GetCronStatusRequest {}
+message GetCronStatus {
+  bool isPaused = 1; // Does global state is paused
+  bool doesAllowMultipleInstances = 2; // Does allow simultaneous tasks of the same job
+  uint32 totalNbrJobs = 4; // Total number of jobs
+  uint32 totalNbrTasks = 3; // Total number of tasks
+}
+
+// Get all jobs
+message GetJobsRequest {}
+message GetJobsStatus {
+  repeated Cron.Job jobs = 1;
+}
+
+// Get specific job
+message GetJobRequest {
+  string name = 1;
+}
+message GetJobStatus {
+  Cron.Job job = 1;
+}
+
+// Force start a job task
+message ForceStartJobTaskRequest {
+  string name = 1;
+}
+message ForceStartJobTaskStatus {
+  Cron.Job job = 1;
+}
+
+// Change CRON global state
+message ChangeCronStateRequest {
+  bool isPaused = 1;
+}
+message ChangeCronStateStatus {}
+
+// Change job state
+message ChangeJobStateRequest {
+  string name = 1;
+  bool isPaused = 2;
+}
+message ChangeJobStateStatus {}
+
+// Allow/Disallow simultaneous tasks of the same job
+message ChangeMultipleInstancesStateRequest {
+  bool doesAllowMultipleInstances = 1;
+}
+message ChangeMultipleInstancesStateStatus {}
+
+// Wait for all tasks to finish
+message WaitTasksRequest {
+  optional string name = 1;
+}
+message WaitTasksStatus {
+  uint32 totalNbrTasks = 1; // Total number of tasks (of all jobs or specific job)
+}
+
+/**
+ * Procedures between Chouf and Maestro
+ */
+service Chouf_Maestro_Service {
+  // CRON
+  rpc getCronStatus(GetCronStatusRequest) returns (GetCronStatus); // Get CRON global state
+  rpc getJobs(GetJobsRequest) returns (GetJobsStatus); // Get CRON jobs
+  rpc getJob(GetJobRequest) returns (GetJobStatus); // Get specific CRON by its name
+  rpc forceStartJobTask(ForceStartJobTaskRequest) returns (ForceStartJobTaskStatus); // Force to start a job task by the job name
+  rpc changeCronState(ChangeCronStateRequest) returns (ChangeCronStateStatus); // Change CRON global state
+  rpc changeJobState(ChangeJobStateRequest) returns (ChangeJobStateStatus); // Change job state
+  rpc changeMultipleInstancesState(ChangeMultipleInstancesStateRequest) returns (ChangeMultipleInstancesStateStatus); // Allow/Disallow simultaneous tasks of the same job
+  rpc waitTasks(WaitTasksRequest) returns (WaitTasksStatus); // Wait for all tasks to finish (of all jobs or specific job)
+}
