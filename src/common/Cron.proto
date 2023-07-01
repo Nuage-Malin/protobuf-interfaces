@@ -2,9 +2,6 @@ syntax = "proto3";
 
 package Cron;
 
-// Time
-import "google/protobuf/timestamp.proto";
-
 message Task {
   bool isRunning = 1; // A task thread can still exist even if the task is not running (in this case the task will be removed sooner)
 }
