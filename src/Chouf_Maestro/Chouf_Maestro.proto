@@ -2,9 +2,6 @@ syntax = "proto3";
 
 package Chouf_Maestro;
 
-import "google/protobuf/duration.proto";
-import "google/protobuf/timestamp.proto";
-
 import "common/Cron.proto";
 
 // Get global CRON status
