@@ -827,7 +827,7 @@ Wait for all tasks to finish
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| totalNbrTasks | [uint32](#uint32) |  | Total number of tasks (of all jobs or specific job) |
+| totalNbrTasks | [uint32](#uint32) |  | Total number of tasks (of all jobs or specific job) waited |
 
 
 
