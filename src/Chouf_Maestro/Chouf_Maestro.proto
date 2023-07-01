@@ -59,7 +59,7 @@ message WaitTasksRequest {
   optional string name = 1;
 }
 message WaitTasksStatus {
-  uint32 totalNbrTasks = 1; // Total number of tasks (of all jobs or specific job)
+  uint32 totalNbrTasks = 1; // Total number of tasks (of all jobs or specific job) waited
 }
 
 /**
