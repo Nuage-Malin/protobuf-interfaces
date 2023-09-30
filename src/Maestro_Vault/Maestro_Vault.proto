@@ -2,14 +2,32 @@ syntax = "proto3";
 
 package Maestro_Vault;
 
+enum storage_type {
+  NONE = 0;
+  UPLOAD_QUEUE = 1;
+  DOWNLOAD_QUEUE = 2;
+  // REMOVE_QUEUE = 3;
+  // REQUEST_QUEUE = 4; // probz not ?
+}
+
+message FileMetaInfo {
+  string fileId = 1;
+  string userId = 2;
+  string diskId = 3;
+  // it's possible to have no store type, then the array is empty
+  repeated storage_type store_types = 4;
+}
+
 /**
  * File to upload
  */
 message UploadFileRequest {
+  // todo replace with FileMetaInfo
   string fileId = 1;
   string userId = 2;
   string diskId = 3;
   bytes content = 4;
+  optional storage_type store_type = 5;
 }
 
 /**
@@ -32,9 +50,23 @@ message UploadFilesStatus {
 }
 
 /**
+ * File to modify
+ */
+message ModifyFileRequest {
+  string fileId = 1;
+  bytes content = 2;
+}
+
+/**
+ * Modify result
+ */
+message ModifyFileStatus {}
+
+/**
  * Download one file
  */
 message DownloadFileRequest {
+  // todo replace with FileMetaInfo
   string fileId = 1;
   string userId = 2;
   string diskId = 3;
@@ -61,6 +93,7 @@ message DownloadFilesStatus {
  * Files to remove
  */
 message RemoveFileRequest {
+  // todo replace with FileMetaInfo
   string fileId = 1;
   string userId = 2;
   string diskId = 3;
@@ -88,16 +121,58 @@ message RemoveFilesStatus {
 }
 
 /**
+ * File to get meta info from
+ */
+message GetFileMetaInfoRequest {
+  // if all three are null, return all
+  string fileId = 1;
+}
+
+/**
+ * Files to get meta info from
+ */
+message GetFilesMetaInfoRequest {
+  // if all three are null, return all
+  optional string userId = 1;
+  optional string diskId = 2;
+  optional storage_type store_type = 3; // ?
+}
+
+/**
+ * Meta info
+ */
+message GetFileMetaInfoStatus {
+  FileMetaInfo file = 1;
+}
+/**
+ * Meta info
+ */
+message GetFilesMetaInfoStatus {
+  repeated FileMetaInfo files = 1;
+}
+
+/**
  * Procedures from Maestro to Vault
  */
 service Maestro_Vault_Service {
   // Upload
   rpc uploadFile(UploadFileRequest) returns (UploadFileStatus); // Upload a file
   rpc uploadFiles(UploadFilesRequest) returns (UploadFilesStatus); // Upload multiple files
+  rpc modifyFile(ModifyFileRequest) returns (ModifyFileStatus); // Modify existing file
+
+  // Remove
   rpc removeFile(RemoveFileRequest) returns (RemoveFileStatus); // Remove multiple files
   rpc removeFiles(RemoveFilesRequest) returns (RemoveFilesStatus); // Remove multiple files
 
   // Download
   rpc downloadFile(DownloadFileRequest) returns (DownloadFileStatus); // Download a file
   rpc downloadFiles(DownloadFilesRequest) returns (DownloadFilesStatus); // Download multiple files
+
+  // MetaInfo
+  // todo
+  //  for vault-cache, add get metadata procedures :
+  rpc getFileMetaInfo(GetFileMetaInfoRequest) returns (GetFileMetaInfoStatus); // get files meta-info by user, disk or file id
+  rpc getFilesMetaInfo(GetFilesMetaInfoRequest) returns (GetFilesMetaInfoStatus); // get files meta-info by user, disk or file id
+  //
+
 }
