@@ -95,7 +95,7 @@ message DownloadFilesStatus {
 
 
 message DownloadStorageTypeFilesRequest {
-  storage_type store_type = 2;
+  storage_type store_type = 1;
 }
 
 /**
@@ -160,6 +160,14 @@ message GetFilesMetaInfoStatus {
   repeated FileMetaInfo files = 1;
 }
 
+message GetFilesDisksRequest {
+  repeated string file_ids = 1;
+}
+
+message GetFilesDisksStatus {
+  repeated string disk_ids = 1;
+}
+
 /**
  * Procedures from Maestro to Vault
  */
@@ -186,6 +194,7 @@ service Maestro_Vault_Service {
   //  for vault-cache, add get metadata procedures :
   rpc getFileMetaInfo(GetFileMetaInfoRequest) returns (GetFileMetaInfoStatus); // get files meta-info by user, disk or file id
   rpc getFilesMetaInfo(GetFilesMetaInfoRequest) returns (GetFilesMetaInfoStatus); // get files meta-info by user, disk or file id
+  rpc getFilesDisks(GetFilesDisksRequest) returns (GetFilesDisksStatus); // get files meta-info by user, disk or file id
   //
 
 }
