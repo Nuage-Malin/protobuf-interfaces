@@ -16,6 +16,7 @@ message FileMetaInfo {
   string diskId = 3;
   // it's possible to have no store type, then the array is empty
   repeated storage_type store_types = 4;
+  // todo creation date ? // not a priority at all
 }
 
 /**
@@ -71,6 +72,7 @@ message DownloadFileRequest {
   string userId = 2;
   string diskId = 3;
 }
+
 message DownloadFileStatus {
   bytes content = 1;
 }
@@ -81,12 +83,19 @@ message DownloadFileStatus {
 message DownloadFilesRequest {
   repeated DownloadFileRequest files = 1;
 }
+
 message DownloadFilesElemStatus {
   string fileId = 1;
   bytes content = 2;
 }
+
 message DownloadFilesStatus {
   repeated DownloadFilesElemStatus files = 1;
+}
+
+
+message DownloadStorageTypeFilesRequest {
+  storage_type store_type = 2;
 }
 
 /**
@@ -165,8 +174,12 @@ service Maestro_Vault_Service {
   rpc removeFiles(RemoveFilesRequest) returns (RemoveFilesStatus); // Remove multiple files
 
   // Download
+  /* todo download storage_type */
+  /* todo download user files */
+  /* todo download disk files */
   rpc downloadFile(DownloadFileRequest) returns (DownloadFileStatus); // Download a file
   rpc downloadFiles(DownloadFilesRequest) returns (DownloadFilesStatus); // Download multiple files
+  rpc downloadStorageTypeFiles(DownloadStorageTypeFilesRequest) returns (DownloadFilesStatus);
 
   // MetaInfo
   // todo
