@@ -3,44 +3,6 @@
 
 ## Table of Contents
 
-- [Maestro_Vault/Maestro_Vault.proto](#Maestro_Vault_Maestro_Vault-proto)
-    - [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest)
-    - [DownloadFileStatus](#Maestro_Vault-DownloadFileStatus)
-    - [DownloadFilesElemStatus](#Maestro_Vault-DownloadFilesElemStatus)
-    - [DownloadFilesRequest](#Maestro_Vault-DownloadFilesRequest)
-    - [DownloadFilesStatus](#Maestro_Vault-DownloadFilesStatus)
-    - [RemoveFileRequest](#Maestro_Vault-RemoveFileRequest)
-    - [RemoveFileStatus](#Maestro_Vault-RemoveFileStatus)
-    - [RemoveFilesRequest](#Maestro_Vault-RemoveFilesRequest)
-    - [RemoveFilesStatus](#Maestro_Vault-RemoveFilesStatus)
-    - [UploadFileRequest](#Maestro_Vault-UploadFileRequest)
-    - [UploadFileStatus](#Maestro_Vault-UploadFileStatus)
-    - [UploadFilesRequest](#Maestro_Vault-UploadFilesRequest)
-    - [UploadFilesStatus](#Maestro_Vault-UploadFilesStatus)
-  
-    - [Maestro_Vault_Service](#Maestro_Vault-Maestro_Vault_Service)
-  
-- [common/Cron.proto](#common_Cron-proto)
-    - [Job](#Cron-Job)
-    - [Task](#Cron-Task)
-  
-- [common/Disk.proto](#common_Disk-proto)
-    - [Disk](#Disk-Disk)
-  
-- [common/File.proto](#common_File-proto)
-    - [DirMetadata](#File-DirMetadata)
-    - [File](#File-File)
-    - [FileApproxMetadata](#File-FileApproxMetadata)
-    - [FileMetadata](#File-FileMetadata)
-    - [FilesIndex](#File-FilesIndex)
-    - [NewFile](#File-NewFile)
-  
-- [Santaclaus_HardwareMalin/Santaclaus_HardwareMalin.proto](#Santaclaus_HardwareMalin_Santaclaus_HardwareMalin-proto)
-    - [GetDisksRequest](#Santaclaus_HardwareMalin-GetDisksRequest)
-    - [GetDisksStatus](#Santaclaus_HardwareMalin-GetDisksStatus)
-  
-    - [Santaclaus_HardwareMalin_Service](#Santaclaus_HardwareMalin-Santaclaus_HardwareMalin_Service)
-  
 - [Chouf_Maestro/Chouf_Maestro.proto](#Chouf_Maestro_Chouf_Maestro-proto)
     - [ChangeCronStateRequest](#Chouf_Maestro-ChangeCronStateRequest)
     - [ChangeCronStateStatus](#Chouf_Maestro-ChangeCronStateStatus)
@@ -61,31 +23,11 @@
   
     - [Chouf_Maestro_Service](#Chouf_Maestro-Chouf_Maestro_Service)
   
-- [Maestro_Santaclaus/Maestro_Santaclaus.proto](#Maestro_Santaclaus_Maestro_Santaclaus-proto)
-    - [AddDirectoryRequest](#Maestro_Santaclaus-AddDirectoryRequest)
-    - [AddDirectoryStatus](#Maestro_Santaclaus-AddDirectoryStatus)
-    - [AddFileRequest](#Maestro_Santaclaus-AddFileRequest)
-    - [AddFileStatus](#Maestro_Santaclaus-AddFileStatus)
-    - [ChangeFileDiskRequest](#Maestro_Santaclaus-ChangeFileDiskRequest)
-    - [ChangeFileDiskStatus](#Maestro_Santaclaus-ChangeFileDiskStatus)
-    - [GetDirectoryRequest](#Maestro_Santaclaus-GetDirectoryRequest)
-    - [GetDirectoryStatus](#Maestro_Santaclaus-GetDirectoryStatus)
-    - [GetFileRequest](#Maestro_Santaclaus-GetFileRequest)
-    - [GetFileStatus](#Maestro_Santaclaus-GetFileStatus)
-    - [MoveDirectoryRequest](#Maestro_Santaclaus-MoveDirectoryRequest)
-    - [MoveDirectoryStatus](#Maestro_Santaclaus-MoveDirectoryStatus)
-    - [MoveFileRequest](#Maestro_Santaclaus-MoveFileRequest)
-    - [MoveFileStatus](#Maestro_Santaclaus-MoveFileStatus)
-    - [RemoveDirectoryRequest](#Maestro_Santaclaus-RemoveDirectoryRequest)
-    - [RemoveDirectoryStatus](#Maestro_Santaclaus-RemoveDirectoryStatus)
-    - [RemoveFileRequest](#Maestro_Santaclaus-RemoveFileRequest)
-    - [RemoveFileStatus](#Maestro_Santaclaus-RemoveFileStatus)
-    - [RemoveFilesRequest](#Maestro_Santaclaus-RemoveFilesRequest)
-    - [RemoveFilesStatus](#Maestro_Santaclaus-RemoveFilesStatus)
-    - [UpdateFileSuccessRequest](#Maestro_Santaclaus-UpdateFileSuccessRequest)
-    - [UpdateFileSuccessStatus](#Maestro_Santaclaus-UpdateFileSuccessStatus)
+- [Santaclaus_HardwareMalin/Santaclaus_HardwareMalin.proto](#Santaclaus_HardwareMalin_Santaclaus_HardwareMalin-proto)
+    - [GetDisksRequest](#Santaclaus_HardwareMalin-GetDisksRequest)
+    - [GetDisksStatus](#Santaclaus_HardwareMalin-GetDisksStatus)
   
-    - [Maestro_Santaclaus_Service](#Maestro_Santaclaus-Maestro_Santaclaus_Service)
+    - [Santaclaus_HardwareMalin_Service](#Santaclaus_HardwareMalin-Santaclaus_HardwareMalin_Service)
   
 - [Maestro_HardwareMalin/Maestro_HardwareMalin.proto](#Maestro_HardwareMalin_Maestro_HardwareMalin-proto)
     - [DiskStatusRequest](#Maestro_HardwareMalin-DiskStatusRequest)
@@ -94,6 +36,23 @@
     - [SetDiskStateStatus](#Maestro_HardwareMalin-SetDiskStateStatus)
   
     - [Maestro_HardwareMalin_Service](#Maestro_HardwareMalin-Maestro_HardwareMalin_Service)
+  
+- [Maestro_Vault/Maestro_Vault.proto](#Maestro_Vault_Maestro_Vault-proto)
+    - [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest)
+    - [DownloadFileStatus](#Maestro_Vault-DownloadFileStatus)
+    - [DownloadFilesElemStatus](#Maestro_Vault-DownloadFilesElemStatus)
+    - [DownloadFilesRequest](#Maestro_Vault-DownloadFilesRequest)
+    - [DownloadFilesStatus](#Maestro_Vault-DownloadFilesStatus)
+    - [RemoveFileRequest](#Maestro_Vault-RemoveFileRequest)
+    - [RemoveFileStatus](#Maestro_Vault-RemoveFileStatus)
+    - [RemoveFilesRequest](#Maestro_Vault-RemoveFilesRequest)
+    - [RemoveFilesStatus](#Maestro_Vault-RemoveFilesStatus)
+    - [UploadFileRequest](#Maestro_Vault-UploadFileRequest)
+    - [UploadFileStatus](#Maestro_Vault-UploadFileStatus)
+    - [UploadFilesRequest](#Maestro_Vault-UploadFilesRequest)
+    - [UploadFilesStatus](#Maestro_Vault-UploadFilesStatus)
+  
+    - [Maestro_Vault_Service](#Maestro_Vault-Maestro_Vault_Service)
   
 - [UsersBack_Maestro/UsersBack_Maestro.proto](#UsersBack_Maestro_UsersBack_Maestro-proto)
     - [AskFileDownloadRequest](#UsersBack_Maestro-AskFileDownloadRequest)
@@ -122,489 +81,48 @@
   
     - [UsersBack_Maestro_Service](#UsersBack_Maestro-UsersBack_Maestro_Service)
   
+- [Maestro_Santaclaus/Maestro_Santaclaus.proto](#Maestro_Santaclaus_Maestro_Santaclaus-proto)
+    - [AddDirectoryRequest](#Maestro_Santaclaus-AddDirectoryRequest)
+    - [AddDirectoryStatus](#Maestro_Santaclaus-AddDirectoryStatus)
+    - [AddFileRequest](#Maestro_Santaclaus-AddFileRequest)
+    - [AddFileStatus](#Maestro_Santaclaus-AddFileStatus)
+    - [ChangeFileDiskRequest](#Maestro_Santaclaus-ChangeFileDiskRequest)
+    - [ChangeFileDiskStatus](#Maestro_Santaclaus-ChangeFileDiskStatus)
+    - [GetDirectoryRequest](#Maestro_Santaclaus-GetDirectoryRequest)
+    - [GetDirectoryStatus](#Maestro_Santaclaus-GetDirectoryStatus)
+    - [GetFileRequest](#Maestro_Santaclaus-GetFileRequest)
+    - [GetFileStatus](#Maestro_Santaclaus-GetFileStatus)
+    - [MoveDirectoryRequest](#Maestro_Santaclaus-MoveDirectoryRequest)
+    - [MoveDirectoryStatus](#Maestro_Santaclaus-MoveDirectoryStatus)
+    - [MoveFileRequest](#Maestro_Santaclaus-MoveFileRequest)
+    - [MoveFileStatus](#Maestro_Santaclaus-MoveFileStatus)
+    - [RemoveDirectoryRequest](#Maestro_Santaclaus-RemoveDirectoryRequest)
+    - [RemoveDirectoryStatus](#Maestro_Santaclaus-RemoveDirectoryStatus)
+    - [RemoveFileRequest](#Maestro_Santaclaus-RemoveFileRequest)
+    - [RemoveFileStatus](#Maestro_Santaclaus-RemoveFileStatus)
+    - [RemoveFilesRequest](#Maestro_Santaclaus-RemoveFilesRequest)
+    - [RemoveFilesStatus](#Maestro_Santaclaus-RemoveFilesStatus)
+    - [UpdateFileSuccessRequest](#Maestro_Santaclaus-UpdateFileSuccessRequest)
+    - [UpdateFileSuccessStatus](#Maestro_Santaclaus-UpdateFileSuccessStatus)
+  
+    - [Maestro_Santaclaus_Service](#Maestro_Santaclaus-Maestro_Santaclaus_Service)
+  
+- [common/Cron.proto](#common_Cron-proto)
+    - [Job](#Cron-Job)
+    - [Task](#Cron-Task)
+  
+- [common/Disk.proto](#common_Disk-proto)
+    - [Disk](#Disk-Disk)
+  
+- [common/File.proto](#common_File-proto)
+    - [DirMetadata](#File-DirMetadata)
+    - [File](#File-File)
+    - [FileApproxMetadata](#File-FileApproxMetadata)
+    - [FileMetadata](#File-FileMetadata)
+    - [FilesIndex](#File-FilesIndex)
+    - [NewFile](#File-NewFile)
+  
 - [Scalar Value Types](#scalar-value-types)
-
-
-
-<a name="Maestro_Vault_Maestro_Vault-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## Maestro_Vault/Maestro_Vault.proto
-
-
-
-<a name="Maestro_Vault-DownloadFileRequest"></a>
-
-### DownloadFileRequest
-Download one file
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileId | [string](#string) |  |  |
-| userId | [string](#string) |  |  |
-| diskId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Vault-DownloadFileStatus"></a>
-
-### DownloadFileStatus
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| content | [bytes](#bytes) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Vault-DownloadFilesElemStatus"></a>
-
-### DownloadFilesElemStatus
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileId | [string](#string) |  |  |
-| content | [bytes](#bytes) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Vault-DownloadFilesRequest"></a>
-
-### DownloadFilesRequest
-Download multiple files
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| files | [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest) | repeated |  |
-
-
-
-
-
-
-<a name="Maestro_Vault-DownloadFilesStatus"></a>
-
-### DownloadFilesStatus
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| files | [DownloadFilesElemStatus](#Maestro_Vault-DownloadFilesElemStatus) | repeated |  |
-
-
-
-
-
-
-<a name="Maestro_Vault-RemoveFileRequest"></a>
-
-### RemoveFileRequest
-Files to remove
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileId | [string](#string) |  |  |
-| userId | [string](#string) |  |  |
-| diskId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Vault-RemoveFileStatus"></a>
-
-### RemoveFileStatus
-Remove result
-
-
-
-
-
-
-<a name="Maestro_Vault-RemoveFilesRequest"></a>
-
-### RemoveFilesRequest
-Files to remove
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileId | [string](#string) | repeated |  |
-| userId | [string](#string) |  |  |
-| diskId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Vault-RemoveFilesStatus"></a>
-
-### RemoveFilesStatus
-Remove result
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileIdFailures | [string](#string) | repeated |  |
-
-
-
-
-
-
-<a name="Maestro_Vault-UploadFileRequest"></a>
-
-### UploadFileRequest
-File to upload
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileId | [string](#string) |  |  |
-| userId | [string](#string) |  |  |
-| diskId | [string](#string) |  |  |
-| content | [bytes](#bytes) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Vault-UploadFileStatus"></a>
-
-### UploadFileStatus
-Upload result
-
-
-
-
-
-
-<a name="Maestro_Vault-UploadFilesRequest"></a>
-
-### UploadFilesRequest
-Files to upload
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| files | [UploadFileRequest](#Maestro_Vault-UploadFileRequest) | repeated |  |
-
-
-
-
-
-
-<a name="Maestro_Vault-UploadFilesStatus"></a>
-
-### UploadFilesStatus
-Upload result
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileIdFailures | [string](#string) | repeated |  |
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="Maestro_Vault-Maestro_Vault_Service"></a>
-
-### Maestro_Vault_Service
-Procedures from Maestro to Vault
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| uploadFile | [UploadFileRequest](#Maestro_Vault-UploadFileRequest) | [UploadFileStatus](#Maestro_Vault-UploadFileStatus) | Upload
-
-Upload a file |
-| uploadFiles | [UploadFilesRequest](#Maestro_Vault-UploadFilesRequest) | [UploadFilesStatus](#Maestro_Vault-UploadFilesStatus) | Upload multiple files |
-| removeFile | [RemoveFileRequest](#Maestro_Vault-RemoveFileRequest) | [RemoveFileStatus](#Maestro_Vault-RemoveFileStatus) | Remove multiple files |
-| removeFiles | [RemoveFilesRequest](#Maestro_Vault-RemoveFilesRequest) | [RemoveFilesStatus](#Maestro_Vault-RemoveFilesStatus) | Remove multiple files |
-| downloadFile | [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest) | [DownloadFileStatus](#Maestro_Vault-DownloadFileStatus) | Download
-
-Download a file |
-| downloadFiles | [DownloadFilesRequest](#Maestro_Vault-DownloadFilesRequest) | [DownloadFilesStatus](#Maestro_Vault-DownloadFilesStatus) | Download multiple files |
-
- 
-
-
-
-<a name="common_Cron-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## common/Cron.proto
-
-
-
-<a name="Cron-Job"></a>
-
-### Job
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  |  |
-| schedule | [string](#string) |  |  |
-| isPaused | [bool](#bool) |  |  |
-| tasks | [Task](#Cron-Task) | repeated |  |
-
-
-
-
-
-
-<a name="Cron-Task"></a>
-
-### Task
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| isRunning | [bool](#bool) |  | A task thread can still exist even if the task is not running (in this case the task will be removed sooner) |
-
-
-
-
-
- 
-
- 
-
- 
-
- 
-
-
-
-<a name="common_Disk-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## common/Disk.proto
-
-
-
-<a name="Disk-Disk"></a>
-
-### Disk
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  | uint32 size = 2; uint32 sizeAvailable = 3; |
-
-
-
-
-
- 
-
- 
-
- 
-
- 
-
-
-
-<a name="common_File-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## common/File.proto
-
-
-
-<a name="File-DirMetadata"></a>
-
-### DirMetadata
-Metadata identifying a directory
-Could be replaced by having only a &#39;isDirectory&#39; field in FileMetadata, making it a File/DirMetadata
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| approxMetadata | [FileApproxMetadata](#File-FileApproxMetadata) |  |  |
-| dirId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="File-File"></a>
-
-### File
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| metadata | [FileMetadata](#File-FileMetadata) |  |  |
-| content | [bytes](#bytes) |  |  |
-
-
-
-
-
-
-<a name="File-FileApproxMetadata"></a>
-
-### FileApproxMetadata
-Metadata regarding a file/directory itself and its location
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  | Filename | to be concatenated after dirname to find full absolute path |
-| dirPath | [string](#string) |  | Directory absolute path | to be concatenated before name to find full absolute path |
-| userId | [string](#string) |  | User identifier, generated by database | TODO clearly define userID globally |
-
-
-
-
-
-
-<a name="File-FileMetadata"></a>
-
-### FileMetadata
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| approxMetadata | [FileApproxMetadata](#File-FileApproxMetadata) |  |  |
-| fileId | [string](#string) |  | TODO clearly define fileID globally |
-| dirId | [string](#string) |  | TODO could do with a bool is Directory, to replace DirMetadata |
-| isDownloadable | [bool](#bool) |  |  |
-| lastEditorId | [string](#string) |  | todo useless ? // TODO clearly define userID globally |
-| creation | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| lastEdit | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-
-
-
-
-
-
-<a name="File-FilesIndex"></a>
-
-### FilesIndex
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileIndex | [FileMetadata](#File-FileMetadata) | repeated |  |
-| dirIndex | [DirMetadata](#File-DirMetadata) | repeated |  |
-
-
-
-
-
-
-<a name="File-NewFile"></a>
-
-### NewFile
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| metadata | [FileApproxMetadata](#File-FileApproxMetadata) |  |  |
-| content | [bytes](#bytes) |  |  |
-
-
-
-
-
- 
-
- 
-
- 
-
- 
-
-
-
-<a name="Santaclaus_HardwareMalin_Santaclaus_HardwareMalin-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## Santaclaus_HardwareMalin/Santaclaus_HardwareMalin.proto
-
-
-
-<a name="Santaclaus_HardwareMalin-GetDisksRequest"></a>
-
-### GetDisksRequest
-Get all possible disks
-
-
-
-
-
-
-<a name="Santaclaus_HardwareMalin-GetDisksStatus"></a>
-
-### GetDisksStatus
-Get all possible disks
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| disks | [Disk.Disk](#Disk-Disk) | repeated |  |
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="Santaclaus_HardwareMalin-Santaclaus_HardwareMalin_Service"></a>
-
-### Santaclaus_HardwareMalin_Service
-Procedures from Maestro to Santaclaus
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| getDisks | [GetDisksRequest](#Santaclaus_HardwareMalin-GetDisksRequest) | [GetDisksStatus](#Santaclaus_HardwareMalin-GetDisksStatus) | Files
-
-Get all possible disks |
-
- 
 
 
 
@@ -862,322 +380,32 @@ Get CRON global state |
 
 
 
-<a name="Maestro_Santaclaus_Maestro_Santaclaus-proto"></a>
+<a name="Santaclaus_HardwareMalin_Santaclaus_HardwareMalin-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## Maestro_Santaclaus/Maestro_Santaclaus.proto
+## Santaclaus_HardwareMalin/Santaclaus_HardwareMalin.proto
 
 
 
-<a name="Maestro_Santaclaus-AddDirectoryRequest"></a>
+<a name="Santaclaus_HardwareMalin-GetDisksRequest"></a>
 
-### AddDirectoryRequest
-Directory to add to the index
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| directory | [File.FileApproxMetadata](#File-FileApproxMetadata) |  | todo add directory id of parent instead of path |
+### GetDisksRequest
+Get all possible disks
 
 
 
 
 
 
-<a name="Maestro_Santaclaus-AddDirectoryStatus"></a>
+<a name="Santaclaus_HardwareMalin-GetDisksStatus"></a>
 
-### AddDirectoryStatus
-Directory added infos
+### GetDisksStatus
+Get all possible disks
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| dirId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-AddFileRequest"></a>
-
-### AddFileRequest
-File to upload to the index
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| file | [File.FileApproxMetadata](#File-FileApproxMetadata) |  |  |
-| fileSize | [uint64](#uint64) |  | todo put dir id |
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-AddFileStatus"></a>
-
-### AddFileStatus
-Response with created file infos
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileId | [string](#string) |  |  |
-| diskId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-ChangeFileDiskRequest"></a>
-
-### ChangeFileDiskRequest
-File to move to another disk
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-ChangeFileDiskStatus"></a>
-
-### ChangeFileDiskStatus
-New file disk
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| diskId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-GetDirectoryRequest"></a>
-
-### GetDirectoryRequest
-Directory to get
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| dirId | [string](#string) | optional | If not set, get root directory |
-| userId | [string](#string) |  |  |
-| isRecursive | [bool](#bool) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-GetDirectoryStatus"></a>
-
-### GetDirectoryStatus
-Directory infos
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| subFiles | [File.FilesIndex](#File-FilesIndex) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-GetFileRequest"></a>
-
-### GetFileRequest
-File to get
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-GetFileStatus"></a>
-
-### GetFileStatus
-File infos
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| file | [File.FileMetadata](#File-FileMetadata) |  |  |
-| diskId | [string](#string) |  | todo time before availability ? |
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-MoveDirectoryRequest"></a>
-
-### MoveDirectoryRequest
-Directory to move
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| dirId | [string](#string) |  | Dir to be moved |
-| name | [string](#string) | optional | If specified : New Name |
-| newLocationDirId | [string](#string) | optional | If specified : DirId to store this dir in (aka new parent dir) |
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-MoveDirectoryStatus"></a>
-
-### MoveDirectoryStatus
-Directory moved infos
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-MoveFileRequest"></a>
-
-### MoveFileRequest
-File to move
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileId | [string](#string) |  |  |
-| newFileName | [string](#string) | optional |  |
-| dirId | [string](#string) | optional |  |
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-MoveFileStatus"></a>
-
-### MoveFileStatus
-File moved infos
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-RemoveDirectoryRequest"></a>
-
-### RemoveDirectoryRequest
-Directory to remove from the index
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| dirId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-RemoveDirectoryStatus"></a>
-
-### RemoveDirectoryStatus
-Directory removed infos
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileIdsToRemove | [string](#string) | repeated |  |
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-RemoveFileRequest"></a>
-
-### RemoveFileRequest
-File to remove from the index
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileId | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-RemoveFileStatus"></a>
-
-### RemoveFileStatus
-File removed infos
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-RemoveFilesRequest"></a>
-
-### RemoveFilesRequest
-Files to remove from the index
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileIds | [string](#string) | repeated |  |
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-RemoveFilesStatus"></a>
-
-### RemoveFilesStatus
-Files removed infos
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-UpdateFileSuccessRequest"></a>
-
-### UpdateFileSuccessRequest
-Uploaded file result
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| fileId | [string](#string) |  |  |
-| newFileSize | [uint64](#uint64) |  |  |
-
-
-
-
-
-
-<a name="Maestro_Santaclaus-UpdateFileSuccessStatus"></a>
-
-### UpdateFileSuccessStatus
-Update file success status
+| disks | [Disk.Disk](#Disk-Disk) | repeated |  |
 
 
 
@@ -1190,34 +418,16 @@ Update file success status
  
 
 
-<a name="Maestro_Santaclaus-Maestro_Santaclaus_Service"></a>
+<a name="Santaclaus_HardwareMalin-Santaclaus_HardwareMalin_Service"></a>
 
-### Maestro_Santaclaus_Service
+### Santaclaus_HardwareMalin_Service
 Procedures from Maestro to Santaclaus
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| addFile | [AddFileRequest](#Maestro_Santaclaus-AddFileRequest) | [AddFileStatus](#Maestro_Santaclaus-AddFileStatus) | Files
+| getDisks | [GetDisksRequest](#Santaclaus_HardwareMalin-GetDisksRequest) | [GetDisksStatus](#Santaclaus_HardwareMalin-GetDisksStatus) | Files
 
-Add a file to the index |
-| virtualRemoveFile | [RemoveFileRequest](#Maestro_Santaclaus-RemoveFileRequest) | [RemoveFileStatus](#Maestro_Santaclaus-RemoveFileStatus) | Remove file virtualy from the DB (not on disks) |
-| virtualRemoveFiles | [RemoveFilesRequest](#Maestro_Santaclaus-RemoveFilesRequest) | [RemoveFilesStatus](#Maestro_Santaclaus-RemoveFilesStatus) | Remove files virtualy from the DB (not on disks) |
-| physicalRemoveFile | [RemoveFileRequest](#Maestro_Santaclaus-RemoveFileRequest) | [RemoveFileStatus](#Maestro_Santaclaus-RemoveFileStatus) | Remove file physically from the file system |
-| physicalRemoveFiles | [RemoveFilesRequest](#Maestro_Santaclaus-RemoveFilesRequest) | [RemoveFilesStatus](#Maestro_Santaclaus-RemoveFilesStatus) | Remove file physically from the file system |
-| moveFile | [MoveFileRequest](#Maestro_Santaclaus-MoveFileRequest) | [MoveFileStatus](#Maestro_Santaclaus-MoveFileStatus) | Move filepath |
-| getFile | [GetFileRequest](#Maestro_Santaclaus-GetFileRequest) | [GetFileStatus](#Maestro_Santaclaus-GetFileStatus) | Get file infos |
-| updateFileSuccess | [UpdateFileSuccessRequest](#Maestro_Santaclaus-UpdateFileSuccessRequest) | [UpdateFileSuccessStatus](#Maestro_Santaclaus-UpdateFileSuccessStatus) | todo set file downloadable
-
-Upload file to disk successfully |
-| changeFileDisk | [ChangeFileDiskRequest](#Maestro_Santaclaus-ChangeFileDiskRequest) | [ChangeFileDiskStatus](#Maestro_Santaclaus-ChangeFileDiskStatus) | todo update file available or not ?
-
-Change file disk |
-| addDirectory | [AddDirectoryRequest](#Maestro_Santaclaus-AddDirectoryRequest) | [AddDirectoryStatus](#Maestro_Santaclaus-AddDirectoryStatus) | Directories
-
-Add a directory to the index |
-| removeDirectory | [RemoveDirectoryRequest](#Maestro_Santaclaus-RemoveDirectoryRequest) | [RemoveDirectoryStatus](#Maestro_Santaclaus-RemoveDirectoryStatus) | Remove a directory from the index |
-| moveDirectory | [MoveDirectoryRequest](#Maestro_Santaclaus-MoveDirectoryRequest) | [MoveDirectoryStatus](#Maestro_Santaclaus-MoveDirectoryStatus) | Move a directory path |
-| getDirectory | [GetDirectoryRequest](#Maestro_Santaclaus-GetDirectoryRequest) | [GetDirectoryStatus](#Maestro_Santaclaus-GetDirectoryStatus) | Get directory infos |
+Get all possible disks |
 
  
 
@@ -1301,6 +511,236 @@ Procedures from Maestro to HardwareMalin
 | ----------- | ------------ | ------------- | ------------|
 | diskStatus | [DiskStatusRequest](#Maestro_HardwareMalin-DiskStatusRequest) | [DiskStatusStatus](#Maestro_HardwareMalin-DiskStatusStatus) | Ask for disk status |
 | setDiskState | [SetDiskStateRequest](#Maestro_HardwareMalin-SetDiskStateRequest) | [SetDiskStateStatus](#Maestro_HardwareMalin-SetDiskStateStatus) |  |
+
+ 
+
+
+
+<a name="Maestro_Vault_Maestro_Vault-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## Maestro_Vault/Maestro_Vault.proto
+
+
+
+<a name="Maestro_Vault-DownloadFileRequest"></a>
+
+### DownloadFileRequest
+Download one file
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+| userId | [string](#string) |  |  |
+| diskId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-DownloadFileStatus"></a>
+
+### DownloadFileStatus
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| content | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-DownloadFilesElemStatus"></a>
+
+### DownloadFilesElemStatus
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+| content | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-DownloadFilesRequest"></a>
+
+### DownloadFilesRequest
+Download multiple files
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| files | [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest) | repeated |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-DownloadFilesStatus"></a>
+
+### DownloadFilesStatus
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| files | [DownloadFilesElemStatus](#Maestro_Vault-DownloadFilesElemStatus) | repeated |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-RemoveFileRequest"></a>
+
+### RemoveFileRequest
+Files to remove
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+| userId | [string](#string) |  |  |
+| diskId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-RemoveFileStatus"></a>
+
+### RemoveFileStatus
+Remove result
+
+
+
+
+
+
+<a name="Maestro_Vault-RemoveFilesRequest"></a>
+
+### RemoveFilesRequest
+Files to remove
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) | repeated |  |
+| userId | [string](#string) |  |  |
+| diskId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-RemoveFilesStatus"></a>
+
+### RemoveFilesStatus
+Remove result
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileIdFailures | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-UploadFileRequest"></a>
+
+### UploadFileRequest
+File to upload
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+| userId | [string](#string) |  |  |
+| diskId | [string](#string) |  |  |
+| content | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-UploadFileStatus"></a>
+
+### UploadFileStatus
+Upload result
+
+
+
+
+
+
+<a name="Maestro_Vault-UploadFilesRequest"></a>
+
+### UploadFilesRequest
+Files to upload
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| files | [UploadFileRequest](#Maestro_Vault-UploadFileRequest) | repeated |  |
+
+
+
+
+
+
+<a name="Maestro_Vault-UploadFilesStatus"></a>
+
+### UploadFilesStatus
+Upload result
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileIdFailures | [string](#string) | repeated |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="Maestro_Vault-Maestro_Vault_Service"></a>
+
+### Maestro_Vault_Service
+Procedures from Maestro to Vault
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| uploadFile | [UploadFileRequest](#Maestro_Vault-UploadFileRequest) | [UploadFileStatus](#Maestro_Vault-UploadFileStatus) | Upload
+
+Upload a file |
+| uploadFiles | [UploadFilesRequest](#Maestro_Vault-UploadFilesRequest) | [UploadFilesStatus](#Maestro_Vault-UploadFilesStatus) | Upload multiple files |
+| removeFile | [RemoveFileRequest](#Maestro_Vault-RemoveFileRequest) | [RemoveFileStatus](#Maestro_Vault-RemoveFileStatus) | Remove multiple files |
+| removeFiles | [RemoveFilesRequest](#Maestro_Vault-RemoveFilesRequest) | [RemoveFilesStatus](#Maestro_Vault-RemoveFilesStatus) | Remove multiple files |
+| downloadFile | [DownloadFileRequest](#Maestro_Vault-DownloadFileRequest) | [DownloadFileStatus](#Maestro_Vault-DownloadFileStatus) | Download
+
+Download a file |
+| downloadFiles | [DownloadFilesRequest](#Maestro_Vault-DownloadFilesRequest) | [DownloadFilesStatus](#Maestro_Vault-DownloadFilesStatus) | Download multiple files |
 
  
 
@@ -1677,6 +1117,566 @@ Create directory |
 | getFilesIndex | [GetFilesIndexRequest](#UsersBack_Maestro-GetFilesIndexRequest) | [GetFilesIndexStatus](#UsersBack_Maestro-GetFilesIndexStatus) | Get file list (ls) |
 | getUserConsumption | [GetUserConsumptionRequest](#UsersBack_Maestro-GetUserConsumptionRequest) | [GetUserConsumptionStatus](#UsersBack_Maestro-GetUserConsumptionStatus) | Get users consumption on period |
 | getUserDiskSpace | [GetUserDiskSpaceRequest](#UsersBack_Maestro-GetUserDiskSpaceRequest) | [GetUserDiskSpaceStatus](#UsersBack_Maestro-GetUserDiskSpaceStatus) |  |
+
+ 
+
+
+
+<a name="Maestro_Santaclaus_Maestro_Santaclaus-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## Maestro_Santaclaus/Maestro_Santaclaus.proto
+
+
+
+<a name="Maestro_Santaclaus-AddDirectoryRequest"></a>
+
+### AddDirectoryRequest
+Directory to add to the index
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| directory | [File.FileApproxMetadata](#File-FileApproxMetadata) |  | todo add directory id of parent instead of path |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-AddDirectoryStatus"></a>
+
+### AddDirectoryStatus
+Directory added infos
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| dirId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-AddFileRequest"></a>
+
+### AddFileRequest
+File to upload to the index
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| file | [File.FileApproxMetadata](#File-FileApproxMetadata) |  |  |
+| fileSize | [uint64](#uint64) |  | todo put dir id |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-AddFileStatus"></a>
+
+### AddFileStatus
+Response with created file infos
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+| diskId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-ChangeFileDiskRequest"></a>
+
+### ChangeFileDiskRequest
+File to move to another disk
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-ChangeFileDiskStatus"></a>
+
+### ChangeFileDiskStatus
+New file disk
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| diskId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-GetDirectoryRequest"></a>
+
+### GetDirectoryRequest
+Directory to get
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| dirId | [string](#string) | optional | If not set, get root directory |
+| userId | [string](#string) |  |  |
+| isRecursive | [bool](#bool) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-GetDirectoryStatus"></a>
+
+### GetDirectoryStatus
+Directory infos
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| subFiles | [File.FilesIndex](#File-FilesIndex) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-GetFileRequest"></a>
+
+### GetFileRequest
+File to get
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-GetFileStatus"></a>
+
+### GetFileStatus
+File infos
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| file | [File.FileMetadata](#File-FileMetadata) |  |  |
+| diskId | [string](#string) |  | todo time before availability ? |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-MoveDirectoryRequest"></a>
+
+### MoveDirectoryRequest
+Directory to move
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| dirId | [string](#string) |  | Dir to be moved |
+| name | [string](#string) | optional | If specified : New Name |
+| newLocationDirId | [string](#string) | optional | If specified : DirId to store this dir in (aka new parent dir) |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-MoveDirectoryStatus"></a>
+
+### MoveDirectoryStatus
+Directory moved infos
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-MoveFileRequest"></a>
+
+### MoveFileRequest
+File to move
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+| newFileName | [string](#string) | optional |  |
+| dirId | [string](#string) | optional |  |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-MoveFileStatus"></a>
+
+### MoveFileStatus
+File moved infos
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-RemoveDirectoryRequest"></a>
+
+### RemoveDirectoryRequest
+Directory to remove from the index
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| dirId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-RemoveDirectoryStatus"></a>
+
+### RemoveDirectoryStatus
+Directory removed infos
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileIdsToRemove | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-RemoveFileRequest"></a>
+
+### RemoveFileRequest
+File to remove from the index
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-RemoveFileStatus"></a>
+
+### RemoveFileStatus
+File removed infos
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-RemoveFilesRequest"></a>
+
+### RemoveFilesRequest
+Files to remove from the index
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileIds | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-RemoveFilesStatus"></a>
+
+### RemoveFilesStatus
+Files removed infos
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-UpdateFileSuccessRequest"></a>
+
+### UpdateFileSuccessRequest
+Uploaded file result
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+| newFileSize | [uint64](#uint64) |  |  |
+
+
+
+
+
+
+<a name="Maestro_Santaclaus-UpdateFileSuccessStatus"></a>
+
+### UpdateFileSuccessStatus
+Update file success status
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="Maestro_Santaclaus-Maestro_Santaclaus_Service"></a>
+
+### Maestro_Santaclaus_Service
+Procedures from Maestro to Santaclaus
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| addFile | [AddFileRequest](#Maestro_Santaclaus-AddFileRequest) | [AddFileStatus](#Maestro_Santaclaus-AddFileStatus) | Files
+
+Add a file to the index |
+| virtualRemoveFile | [RemoveFileRequest](#Maestro_Santaclaus-RemoveFileRequest) | [RemoveFileStatus](#Maestro_Santaclaus-RemoveFileStatus) | Remove file virtualy from the DB (not on disks) |
+| virtualRemoveFiles | [RemoveFilesRequest](#Maestro_Santaclaus-RemoveFilesRequest) | [RemoveFilesStatus](#Maestro_Santaclaus-RemoveFilesStatus) | Remove files virtualy from the DB (not on disks) |
+| physicalRemoveFile | [RemoveFileRequest](#Maestro_Santaclaus-RemoveFileRequest) | [RemoveFileStatus](#Maestro_Santaclaus-RemoveFileStatus) | Remove file physically from the file system |
+| physicalRemoveFiles | [RemoveFilesRequest](#Maestro_Santaclaus-RemoveFilesRequest) | [RemoveFilesStatus](#Maestro_Santaclaus-RemoveFilesStatus) | Remove file physically from the file system |
+| moveFile | [MoveFileRequest](#Maestro_Santaclaus-MoveFileRequest) | [MoveFileStatus](#Maestro_Santaclaus-MoveFileStatus) | Move filepath |
+| getFile | [GetFileRequest](#Maestro_Santaclaus-GetFileRequest) | [GetFileStatus](#Maestro_Santaclaus-GetFileStatus) | Get file infos |
+| updateFileSuccess | [UpdateFileSuccessRequest](#Maestro_Santaclaus-UpdateFileSuccessRequest) | [UpdateFileSuccessStatus](#Maestro_Santaclaus-UpdateFileSuccessStatus) | todo set file downloadable
+
+Upload file to disk successfully |
+| changeFileDisk | [ChangeFileDiskRequest](#Maestro_Santaclaus-ChangeFileDiskRequest) | [ChangeFileDiskStatus](#Maestro_Santaclaus-ChangeFileDiskStatus) | todo update file available or not ?
+
+Change file disk |
+| addDirectory | [AddDirectoryRequest](#Maestro_Santaclaus-AddDirectoryRequest) | [AddDirectoryStatus](#Maestro_Santaclaus-AddDirectoryStatus) | Directories
+
+Add a directory to the index |
+| removeDirectory | [RemoveDirectoryRequest](#Maestro_Santaclaus-RemoveDirectoryRequest) | [RemoveDirectoryStatus](#Maestro_Santaclaus-RemoveDirectoryStatus) | Remove a directory from the index |
+| moveDirectory | [MoveDirectoryRequest](#Maestro_Santaclaus-MoveDirectoryRequest) | [MoveDirectoryStatus](#Maestro_Santaclaus-MoveDirectoryStatus) | Move a directory path |
+| getDirectory | [GetDirectoryRequest](#Maestro_Santaclaus-GetDirectoryRequest) | [GetDirectoryStatus](#Maestro_Santaclaus-GetDirectoryStatus) | Get directory infos |
+
+ 
+
+
+
+<a name="common_Cron-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## common/Cron.proto
+
+
+
+<a name="Cron-Job"></a>
+
+### Job
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| schedule | [string](#string) |  |  |
+| isPaused | [bool](#bool) |  |  |
+| tasks | [Task](#Cron-Task) | repeated |  |
+
+
+
+
+
+
+<a name="Cron-Task"></a>
+
+### Task
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| isRunning | [bool](#bool) |  | A task thread can still exist even if the task is not running (in this case the task will be removed sooner) |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="common_Disk-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## common/Disk.proto
+
+
+
+<a name="Disk-Disk"></a>
+
+### Disk
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | uint32 size = 2; uint32 sizeAvailable = 3; |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="common_File-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## common/File.proto
+
+
+
+<a name="File-DirMetadata"></a>
+
+### DirMetadata
+Metadata identifying a directory
+Could be replaced by having only a &#39;isDirectory&#39; field in FileMetadata, making it a File/DirMetadata
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| approxMetadata | [FileApproxMetadata](#File-FileApproxMetadata) |  |  |
+| dirId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="File-File"></a>
+
+### File
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| metadata | [FileMetadata](#File-FileMetadata) |  |  |
+| content | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="File-FileApproxMetadata"></a>
+
+### FileApproxMetadata
+Metadata regarding a file/directory itself and its location
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  | Filename | to be concatenated after dirname to find full absolute path |
+| dirId | [string](#string) | optional | Directory absolute path | to be concatenated before name to find full absolute path |
+| userId | [string](#string) |  | User identifier, generated by database | TODO clearly define userID globally |
+
+
+
+
+
+
+<a name="File-FileMetadata"></a>
+
+### FileMetadata
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| approxMetadata | [FileApproxMetadata](#File-FileApproxMetadata) |  |  |
+| fileId | [string](#string) |  | TODO clearly define fileID globally |
+| dirId | [string](#string) |  | TODO could do with a bool is Directory, to replace DirMetadata |
+| isDownloadable | [bool](#bool) |  |  |
+| lastEditorId | [string](#string) |  | todo useless ? // TODO clearly define userID globally |
+| creation | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| lastEdit | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="File-FilesIndex"></a>
+
+### FilesIndex
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileIndex | [FileMetadata](#File-FileMetadata) | repeated |  |
+| dirIndex | [DirMetadata](#File-DirMetadata) | repeated |  |
+
+
+
+
+
+
+<a name="File-NewFile"></a>
+
+### NewFile
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| metadata | [FileApproxMetadata](#File-FileApproxMetadata) |  |  |
+| content | [bytes](#bytes) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
 
  
 
