@@ -36,6 +36,14 @@ message AskFileDownloadStatus {
 }
 
 /**
+ * Id of the file to be canceled
+ */
+message CancelFileDownloadRequest {
+  string fileId = 1;
+}
+message CancelFileDownloadStatus {}
+
+/**
  * File id corresponding to the file to be downloaded
  */
 message FileDownloadRequest {
@@ -136,6 +144,7 @@ service UsersBack_Maestro_Service {
   // Files
   rpc fileUpload(FileUploadRequest) returns (FileUploadStatus); // Upload a file
   rpc askFileDownload(AskFileDownloadRequest) returns (AskFileDownloadStatus); // Ask to download a file
+  rpc cancelFileDownload(CancelFileDownloadRequest) returns (CancelFileDownloadStatus); // Cancel a file download (success even if file was not asked)
   rpc fileDownload(FileDownloadRequest) returns (File.File); // Download a file if already asked
   rpc fileRemove(FileRemoveRequest) returns (FileRemoveStatus); // Delete an existing file
   rpc filesRemove(FilesRemoveRequest) returns (FilesRemoveStatus); // Delete an existing file
