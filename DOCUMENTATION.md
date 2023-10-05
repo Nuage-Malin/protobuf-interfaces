@@ -57,6 +57,8 @@
 - [UsersBack_Maestro/UsersBack_Maestro.proto](#UsersBack_Maestro_UsersBack_Maestro-proto)
     - [AskFileDownloadRequest](#UsersBack_Maestro-AskFileDownloadRequest)
     - [AskFileDownloadStatus](#UsersBack_Maestro-AskFileDownloadStatus)
+    - [CancelFileDownloadRequest](#UsersBack_Maestro-CancelFileDownloadRequest)
+    - [CancelFileDownloadStatus](#UsersBack_Maestro-CancelFileDownloadStatus)
     - [DirMakeRequest](#UsersBack_Maestro-DirMakeRequest)
     - [DirMakeStatus](#UsersBack_Maestro-DirMakeStatus)
     - [DirMoveRequest](#UsersBack_Maestro-DirMoveRequest)
@@ -783,6 +785,31 @@ Time until which the file will be made available for download
 
 
 
+<a name="UsersBack_Maestro-CancelFileDownloadRequest"></a>
+
+### CancelFileDownloadRequest
+Id of the file to be canceled
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fileId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="UsersBack_Maestro-CancelFileDownloadStatus"></a>
+
+### CancelFileDownloadStatus
+
+
+
+
+
+
+
 <a name="UsersBack_Maestro-DirMakeRequest"></a>
 
 ### DirMakeRequest
@@ -1105,6 +1132,7 @@ Procedures from UsersBack to Maestro
 
 Upload a file |
 | askFileDownload | [AskFileDownloadRequest](#UsersBack_Maestro-AskFileDownloadRequest) | [AskFileDownloadStatus](#UsersBack_Maestro-AskFileDownloadStatus) | Ask to download a file |
+| cancelFileDownload | [CancelFileDownloadRequest](#UsersBack_Maestro-CancelFileDownloadRequest) | [CancelFileDownloadStatus](#UsersBack_Maestro-CancelFileDownloadStatus) | Cancel a file download (success even if file was not asked) |
 | fileDownload | [FileDownloadRequest](#UsersBack_Maestro-FileDownloadRequest) | [.File.File](#File-File) | Download a file if already asked |
 | fileRemove | [FileRemoveRequest](#UsersBack_Maestro-FileRemoveRequest) | [FileRemoveStatus](#UsersBack_Maestro-FileRemoveStatus) | Delete an existing file |
 | filesRemove | [FilesRemoveRequest](#UsersBack_Maestro-FilesRemoveRequest) | [FilesRemoveStatus](#UsersBack_Maestro-FilesRemoveStatus) | Delete an existing file |
