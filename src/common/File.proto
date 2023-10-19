@@ -7,6 +7,14 @@ import "google/protobuf/timestamp.proto";
 
 option go_package = "./";
 
+enum FileState {
+  UNKNOWN = 0;
+  UPLOADING = 1;
+  STORED = 2;
+  ASKED = 3;
+  DOWNLOADABLE = 4;
+}
+
 /**
  * Metadata regarding a file/directory itself and its location
  */
@@ -20,7 +28,7 @@ message FileMetadata {
   FileApproxMetadata approxMetadata = 1;
   string fileId = 2; // TODO clearly define fileID globally
   string dirId = 3; // TODO could do with a bool is Directory, to replace DirMetadata
-  bool isDownloadable = 4;
+  FileState state = 4;
   string lastEditorId = 5; // todo useless ? // TODO clearly define userID globally
   google.protobuf.Timestamp creation = 6;
   google.protobuf.Timestamp lastEdit = 7;
