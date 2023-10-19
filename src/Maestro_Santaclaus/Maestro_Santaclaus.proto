@@ -12,7 +12,6 @@ option go_package = "./";
 message AddFileRequest {
   File.FileApproxMetadata file = 1;
   uint64 fileSize = 2;
-  // todo put dir id
 }
 
 /**

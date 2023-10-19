@@ -36,6 +36,14 @@ message AskFileDownloadStatus {
 }
 
 /**
+ * Id of the file to be canceled
+ */
+message CancelFileDownloadRequest {
+  string fileId = 1;
+}
+message CancelFileDownloadStatus {}
+
+/**
  * File id corresponding to the file to be downloaded
  */
 message FileDownloadRequest {
@@ -87,10 +95,12 @@ message FileMoveRequest {
 message FileMoveStatus {}
 
 message DirMakeRequest {
-  string dirPath = 1;
+  File.FileApproxMetadata directory = 1;
 }
 
-message DirMakeStatus {}
+message DirMakeStatus {
+  string dirId = 1;
+}
 
 message DirRemoveRequest {
   string dirId = 1;
@@ -109,8 +119,8 @@ message DirMoveStatus {}
 */
 message GetUserConsumptionRequest {
   string userId = 1;
-  google.protobuf.Timestamp startDate = 2; // Start date of the period
-  google.protobuf.Timestamp endDate = 3; // End date of the period
+  optional google.protobuf.Timestamp startDate = 2; // Start date of the period
+  optional google.protobuf.Timestamp endDate = 3; // End date of the period (default as now)
 }
 
 message GetUserConsumptionStatus {
@@ -119,7 +129,7 @@ message GetUserConsumptionStatus {
 
 message GetUserDiskSpaceRequest {
   string userId = 1;
-  google.protobuf.Timestamp date = 2; // Date can be now or an older one
+  optional google.protobuf.Timestamp date = 2; // Date can be now or an older one (default as now)
 }
 
 message GetUserDiskSpaceStatus {
@@ -134,6 +144,7 @@ service UsersBack_Maestro_Service {
   // Files
   rpc fileUpload(FileUploadRequest) returns (FileUploadStatus); // Upload a file
   rpc askFileDownload(AskFileDownloadRequest) returns (AskFileDownloadStatus); // Ask to download a file
+  rpc cancelFileDownload(CancelFileDownloadRequest) returns (CancelFileDownloadStatus); // Cancel a file download (success even if file was not asked)
   rpc fileDownload(FileDownloadRequest) returns (File.File); // Download a file if already asked
   rpc fileRemove(FileRemoveRequest) returns (FileRemoveStatus); // Delete an existing file
   rpc filesRemove(FilesRemoveRequest) returns (FilesRemoveStatus); // Delete an existing file
