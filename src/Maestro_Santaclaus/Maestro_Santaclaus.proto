@@ -87,7 +87,7 @@ message RemoveDirectoryRequest {
  * Directory removed infos
  */
 message RemoveDirectoryStatus {
-  repeated string fileIdsToRemove = 1;
+  repeated string fileIdsToRemove = 1; // todo is it actually fileIdsRemoved ?
 }
 
 /**
@@ -168,29 +168,40 @@ message ChangeFileDiskStatus {
   string diskId = 1;
 }
 
+message RemoveUserRequest {
+  string userId = 1;
+}
+
+message RemoveUserStatus {}
+
 /**
  * Procedures from Maestro to Santaclaus
  */
 service Maestro_Santaclaus_Service {
   // Files
   rpc addFile(AddFileRequest) returns (AddFileStatus); // Add a file to the index
-  rpc virtualRemoveFile(RemoveFileRequest) returns (RemoveFileStatus); // Remove file virtualy from the DB (not on disks)
-  rpc virtualRemoveFiles(RemoveFilesRequest) returns (RemoveFilesStatus); // Remove files virtualy from the DB (not on disks)
-  rpc physicalRemoveFile(RemoveFileRequest) returns (RemoveFileStatus); // Remove file physically from the file system
-  rpc physicalRemoveFiles(RemoveFilesRequest) returns (RemoveFilesStatus); // Remove file physically from the file system
+  rpc virtualRemoveFile(RemoveFileRequest) returns (RemoveFileStatus); // Mark file as removed
+  rpc virtualRemoveFiles(RemoveFilesRequest) returns (RemoveFilesStatus); // Mark files as removed
+  rpc physicalRemoveFile(RemoveFileRequest) returns (RemoveFileStatus); // Remove file
+  rpc physicalRemoveFiles(RemoveFilesRequest) returns (RemoveFilesStatus); // Remove files
   rpc moveFile(MoveFileRequest) returns (MoveFileStatus); // Move filepath
   rpc getFile(GetFileRequest) returns (GetFileStatus); // Get file infos
-  // todo set file downloadable
+  // todo set file downloadable or is it done by maestro ?
   rpc updateFileSuccess(UpdateFileSuccessRequest) returns (UpdateFileSuccessStatus); // Upload file to disk successfully
   // todo update file available or not ?
   rpc changeFileDisk(ChangeFileDiskRequest) returns (ChangeFileDiskStatus); // Change file disk
 
   // Directories
   rpc addDirectory(AddDirectoryRequest) returns (AddDirectoryStatus); // Add a directory to the index
-  rpc removeDirectory(RemoveDirectoryRequest) returns (RemoveDirectoryStatus); // Remove a directory from the index
+  rpc removeDirectory(RemoveDirectoryRequest) returns (RemoveDirectoryStatus); // Remove directory and all subdirectories and returns list of files to delete
   rpc moveDirectory(MoveDirectoryRequest) returns (MoveDirectoryStatus); // Move a directory path
-  rpc getDirectory(GetDirectoryRequest) returns (GetDirectoryStatus); // Get directory infos
+  rpc getDirectory(GetDirectoryRequest) returns (GetDirectoryStatus); // Get directory infos, if dirId is null, start from root directory
+
+  // Users
+  rpc removeUser(RemoveUserRequest) returns (RemoveDirectoryStatus); // Remove all user directories and return files to be deleted
 }
+
+// todo Implement all those procedures in one class, helper procedures in other classes
 
 // [x] addFile
 // [x] virtualRemoveFile
