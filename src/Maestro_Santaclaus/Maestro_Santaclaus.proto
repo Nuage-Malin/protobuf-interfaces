@@ -51,14 +51,20 @@ message RemoveFilesStatus {}
  */
 message MoveFileRequest {
   string fileId = 1;
-  optional string newFileName = 3;
-  optional string dirId = 2;
+  string newDirId = 2;
 }
 
-/**
- * File moved infos
- */
-message MoveFileStatus {}
+ message MoveFileStatus {}
+
+ /**
+  * file to rename and new file name
+  */
+message RenameFileRequest {
+  string fileId = 1; // file to be renamed
+  string newFileName = 2; // New name of file
+}
+
+message RenameFileStatus {}
 
 /**
  * Directory to add to the index
@@ -94,14 +100,20 @@ message RemoveDirectoryStatus {
  */
 message MoveDirectoryRequest {
   string dirId = 1; // Dir to be moved
-  optional string name = 2; // If specified : New Name
-  optional string newLocationDirId = 3; // If specified : DirId to store this dir in (aka new parent dir)
+  string newDirId = 2; // DirId to store this dir in (aka new parent dir)
 }
 
-/**
- * Directory moved infos
- */
 message MoveDirectoryStatus {}
+
+/**
+ * Directory to move
+ */
+message RenameDirectoryRequest {
+  string dirId = 1; // Dir to be renamed
+  string newDirName = 2; // New Name
+}
+
+message RenameDirectoryStatus {}
 
 /**
  * File to get
@@ -183,17 +195,17 @@ service Maestro_Santaclaus_Service {
   rpc virtualRemoveFiles(RemoveFilesRequest) returns (RemoveFilesStatus); // Mark files as removed
   rpc physicalRemoveFile(RemoveFileRequest) returns (RemoveFileStatus); // Remove file
   rpc physicalRemoveFiles(RemoveFilesRequest) returns (RemoveFilesStatus); // Remove files
-  rpc moveFile(MoveFileRequest) returns (MoveFileStatus); // Move filepath
+  rpc moveFile(MoveFileRequest) returns (MoveFileStatus); // Chnage location (directory) of a file
+  rpc renameFile(RenameFileRequest) returns (RenameFileStatus); // Chnage name of a file
   rpc getFile(GetFileRequest) returns (GetFileStatus); // Get file infos
-  // todo set file downloadable or is it done by maestro ?
   rpc updateFileSuccess(UpdateFileSuccessRequest) returns (UpdateFileSuccessStatus); // Upload file to disk successfully
-  // todo update file available or not ?
   rpc changeFileDisk(ChangeFileDiskRequest) returns (ChangeFileDiskStatus); // Change file disk
 
   // Directories
   rpc addDirectory(AddDirectoryRequest) returns (AddDirectoryStatus); // Add a directory to the index
   rpc removeDirectory(RemoveDirectoryRequest) returns (RemoveDirectoryStatus); // Remove directory and all subdirectories and returns list of files to delete
-  rpc moveDirectory(MoveDirectoryRequest) returns (MoveDirectoryStatus); // Move a directory path
+  rpc moveDirectory(MoveDirectoryRequest) returns (MoveDirectoryStatus); // Chamge location (parent directory) of a direcory
+  rpc renameDirectory(RenameDirectoryRequest) returns (RenameDirectoryStatus); // Change name of a directory
   rpc getDirectory(GetDirectoryRequest) returns (GetDirectoryStatus); // Get directory infos, if dirId is null, start from root directory
 
   // Users
@@ -205,11 +217,13 @@ service Maestro_Santaclaus_Service {
 // [x] addFile
 // [x] virtualRemoveFile
 // [x] physicalRemoveFile
-// [x] moveFile
+// [] moveFile
+// [] renameFile
 // [x] getFile
 // [x] updateFileSuccess
 // [] changeFileDisk
 // [x] addDirectory
 // [x] removeDirectory
-// [x] moveDirectory
+// [] moveDirectory
+// [] renameDirectory
 // [x] getDirectory
