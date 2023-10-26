@@ -41,6 +41,8 @@ message FileMetadata {
 message DirMetadata {
   FileApproxMetadata approxMetadata = 1;
   string dirId = 2;
+  google.protobuf.Timestamp creation = 3;
+  google.protobuf.Timestamp lastEdit = 4;
 }
 
 message File {
