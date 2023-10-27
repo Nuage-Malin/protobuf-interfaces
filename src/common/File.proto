@@ -43,6 +43,7 @@ message DirMetadata {
   string dirId = 2;
   google.protobuf.Timestamp creation = 3;
   google.protobuf.Timestamp lastEdit = 4;
+  FileState state = 5;
 }
 
 message File {
