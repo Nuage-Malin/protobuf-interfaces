@@ -71,7 +71,6 @@ message RenameFileStatus {}
  */
 message AddDirectoryRequest {
   File.FileApproxMetadata directory = 1;
-  // todo add directory id of parent instead of path
 }
 
 /**
@@ -182,8 +181,6 @@ message ChangeFileDiskStatus {
 message RemoveUserRequest {
   string userId = 1;
 }
-
-message RemoveUserStatus {}
 
 /**
  * Procedures from Maestro to Santaclaus
