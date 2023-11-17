@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package Cron;
+
+message Task {
+  bool isRunning = 1; // A task thread can still exist even if the task is not running (in this case the task will be removed sooner)
+}
+
+message Job {
+  string name = 1;
+  string schedule = 2;
+  bool isPaused = 3;
+  repeated Task tasks = 4;
+}
