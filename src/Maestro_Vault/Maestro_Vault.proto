@@ -5,7 +5,7 @@ package Maestro_Vault;
 enum storage_type {
   NONE = 0;
   UPLOAD_QUEUE = 1;
-  DOWNLOAD_QUEUE = 2;
+  DOWNLOAD_QUEUE = 2; // todo replace by download stack
   // REMOVE_QUEUE = 3;
   // REQUEST_QUEUE = 4; // probz not ?
 }
@@ -67,10 +67,9 @@ message ModifyFileStatus {}
  * Download one file
  */
 message DownloadFileRequest {
-  // todo replace with FileMetaInfo
   string fileId = 1;
-  string userId = 2;
-  string diskId = 3;
+  // string userId = 2;
+  // string diskId = 3;
 }
 
 message DownloadFileStatus {
@@ -117,9 +116,9 @@ message RemoveFileStatus {}
  * Files to remove
  */
 message RemoveFilesRequest {
-  repeated string fileId = 1;
-  string userId = 2;
-  string diskId = 3;
+  repeated string fileId = 1; // todo put s to fileId
+  // string userId = 2; // todo remove cause useless
+  // string diskId = 3; // todo remove cause useless
 }
 
 /**
@@ -128,6 +127,12 @@ message RemoveFilesRequest {
 message RemoveFilesStatus {
   repeated string fileIdFailures = 1;
 }
+
+message RemoveUserRequest {
+  string userId = 1;
+}
+
+message RemoveUserStatus {}
 
 /**
  * File to get meta info from
@@ -181,13 +186,14 @@ service Maestro_Vault_Service {
   rpc removeFile(RemoveFileRequest) returns (RemoveFileStatus); // Remove multiple files
   rpc removeFiles(RemoveFilesRequest) returns (RemoveFilesStatus); // Remove multiple files
 
+  rpc removeUser(RemoveUserRequest) returns (RemoveUserStatus); // Remove user related files and directories
+
   // Download
-  /* todo download storage_type */
   /* todo download user files */
   /* todo download disk files */
   rpc downloadFile(DownloadFileRequest) returns (DownloadFileStatus); // Download a file
   rpc downloadFiles(DownloadFilesRequest) returns (DownloadFilesStatus); // Download multiple files
-  rpc downloadStorageTypeFiles(DownloadStorageTypeFilesRequest) returns (DownloadFilesStatus);
+  rpc downloadStorageTypeFiles(DownloadStorageTypeFilesRequest) returns (DownloadFilesStatus); // todo test
 
   // MetaInfo
   // todo
