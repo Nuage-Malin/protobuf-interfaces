@@ -67,10 +67,9 @@ message ModifyFileStatus {}
  * Download one file
  */
 message DownloadFileRequest {
-  // todo replace with FileMetaInfo
   string fileId = 1;
-  string userId = 2;
-  string diskId = 3;
+  // string userId = 2;
+  // string diskId = 3;
 }
 
 message DownloadFileStatus {
