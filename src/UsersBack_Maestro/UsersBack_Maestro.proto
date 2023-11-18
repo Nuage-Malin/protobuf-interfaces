@@ -83,16 +83,24 @@ message FilesRemoveStatus {
 }
 
 /**
- * File to be moved to another directory
+ * File to move
  */
-message FileMoveRequest {
+message MoveFileRequest {
   string fileId = 1;
-  optional string newFileName = 3;
-  optional string dirId = 2;
+  string newDirId = 2;
 }
 
+message MoveFileStatus {}
 
-message FileMoveStatus {}
+ /**
+  * file to rename and new file name
+  */
+message RenameFileRequest {
+  string fileId = 1; // file to be renamed
+  string newFileName = 2; // New name of file
+}
+
+message RenameFileStatus {}
 
 message DirMakeRequest {
   File.FileApproxMetadata directory = 1;
@@ -108,13 +116,26 @@ message DirRemoveRequest {
 
 message DirRemoveStatus {}
 
-message DirMoveRequest {
+/**
+ * Directory to move
+ */
+message MoveDirectoryRequest {
   string dirId = 1; // Dir to be moved
-  optional string name = 2; // If specified : New Name
-  optional string newLocationDirId = 3; // If specified : DirId to store this dir in (aka new parent dir)
+  string newDirId = 2; // DirId to store this dir in (aka new parent dir)
 }
 
-message DirMoveStatus {}
+message MoveDirectoryStatus {}
+
+/**
+ * Directory to move
+ */
+message RenameDirectoryRequest {
+  string dirId = 1; // Dir to be renamed
+  string newDirName = 2; // New Name
+}
+
+message RenameDirectoryStatus {}
+
 /* Users consumption on a period
 */
 message GetUserConsumptionRequest {
@@ -148,12 +169,14 @@ service UsersBack_Maestro_Service {
   rpc fileDownload(FileDownloadRequest) returns (File.File); // Download a file if already asked
   rpc fileRemove(FileRemoveRequest) returns (FileRemoveStatus); // Delete an existing file
   rpc filesRemove(FilesRemoveRequest) returns (FilesRemoveStatus); // Delete an existing file
-  rpc fileMove(FileMoveRequest) returns (FileMoveStatus); // Change directory or name of an existing file
+  rpc moveFile(MoveFileRequest) returns (MoveFileStatus); // Change directory of an existing file
+  rpc renameFile(RenameFileRequest) returns (RenameFileStatus); // Change name of an existing file
 
   // Directories
   rpc dirMake(DirMakeRequest) returns (DirMakeStatus); // Create directory
   rpc dirRemove(DirRemoveRequest) returns (DirRemoveStatus); // Delete directory
-  rpc dirMove(DirMoveRequest) returns (DirMoveStatus); // Change position (or name) of an existing directory
+  rpc moveDir(MoveDirectoryRequest) returns (MoveDirectoryStatus); // Change position of an existing directory
+  rpc renameDir(RenameDirectoryRequest) returns (RenameDirectoryStatus); // Change name of an existing directory
 
   rpc getFilesIndex(GetFilesIndexRequest) returns (GetFilesIndexStatus); // Get file list (ls)
   rpc getUserConsumption(GetUserConsumptionRequest) returns (GetUserConsumptionStatus); // Get users consumption on period
