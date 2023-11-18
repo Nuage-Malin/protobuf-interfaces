@@ -116,9 +116,7 @@ message RemoveFileStatus {}
  * Files to remove
  */
 message RemoveFilesRequest {
-  repeated string fileId = 1; // todo put s to fileId
-  // string userId = 2; // todo remove cause useless
-  // string diskId = 3; // todo remove cause useless
+  repeated string fileIds = 1;
 }
 
 /**
