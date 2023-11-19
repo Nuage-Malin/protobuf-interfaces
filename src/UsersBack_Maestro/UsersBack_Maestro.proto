@@ -158,6 +158,11 @@ message GetUserDiskSpaceStatus {
   uint64 usedDiskSpace = 2;
 }
 
+message RemoveUserRequest {
+  string userId = 1;
+}
+message RemoveUserStatus {}
+
 /**
  * Procedures from UsersBack to Maestro
  */
@@ -181,4 +186,6 @@ service UsersBack_Maestro_Service {
   rpc getFilesIndex(GetFilesIndexRequest) returns (GetFilesIndexStatus); // Get file list (ls)
   rpc getUserConsumption(GetUserConsumptionRequest) returns (GetUserConsumptionStatus); // Get users consumption on period
   rpc getUserDiskSpace(GetUserDiskSpaceRequest) returns (GetUserDiskSpaceStatus);
+
+  rpc removeUser(RemoveUserRequest) returns (RemoveUserStatus); // Remove a user
 }
