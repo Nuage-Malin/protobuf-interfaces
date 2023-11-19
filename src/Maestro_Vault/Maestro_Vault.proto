@@ -17,6 +17,7 @@ message FileMetaInfo {
   // it's possible to have no store type, then the array is empty
   repeated storage_type store_types = 4;
   // todo creation date ? // not a priority at all
+  // todo size // for getting UserDiskSpace
 }
 
 /**
@@ -68,8 +69,6 @@ message ModifyFileStatus {}
  */
 message DownloadFileRequest {
   string fileId = 1;
-  // string userId = 2;
-  // string diskId = 3;
 }
 
 message DownloadFileStatus {
