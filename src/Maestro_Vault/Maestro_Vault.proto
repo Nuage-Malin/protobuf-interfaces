@@ -100,10 +100,7 @@ message DownloadStorageTypeFilesRequest {
  * Files to remove
  */
 message RemoveFileRequest {
-  // todo replace with FileMetaInfo
   string fileId = 1;
-  string userId = 2;
-  string diskId = 3;
 }
 
 /**
