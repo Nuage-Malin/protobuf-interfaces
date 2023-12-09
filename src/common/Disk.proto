@@ -9,3 +9,8 @@ message Disk {
     // uint32 size = 2;
     // uint32 sizeAvailable = 3;
 }
+
+message DiskStatus {
+    string id = 1;
+    bool status = 2;
+}

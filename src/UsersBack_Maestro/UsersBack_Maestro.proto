@@ -6,6 +6,7 @@ import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 
 import "common/File.proto";
+import "common/Disk.proto";
 
 /**
  * File to be uploaded to the server
@@ -158,6 +159,11 @@ message GetUserDiskSpaceStatus {
   uint64 usedDiskSpace = 2;
 }
 
+message GetDisksStatusRequest {}
+message GetDisksStatusStatus {
+  repeated Disk.DiskStatus disks = 1;
+}
+
 message RemoveUserRequest {
   string userId = 1;
 }
@@ -186,6 +192,7 @@ service UsersBack_Maestro_Service {
   rpc getFilesIndex(GetFilesIndexRequest) returns (GetFilesIndexStatus); // Get file list (ls)
   rpc getUserConsumption(GetUserConsumptionRequest) returns (GetUserConsumptionStatus); // Get users consumption on period
   rpc getUserDiskSpace(GetUserDiskSpaceRequest) returns (GetUserDiskSpaceStatus);
+  rpc getDisksStatus(GetDisksStatusRequest) returns (GetDisksStatusStatus); // List disks with there status
 
   rpc removeUser(RemoveUserRequest) returns (RemoveUserStatus); // Remove a user
 }
