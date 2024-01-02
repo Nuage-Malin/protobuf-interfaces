@@ -1257,7 +1257,6 @@ Metadata regarding a file/directory itself and its location
 | ----- | ---- | ----- | ----------- |
 | approxMetadata | [FileApproxMetadata](#File-FileApproxMetadata) |  |  |
 | fileId | [string](#string) |  | TODO clearly define fileID globally |
-| dirId | [string](#string) |  | TODO could do with a bool is Directory, to replace DirMetadata |
 | state | [FileState](#File-FileState) |  |  |
 | lastEditorId | [string](#string) |  | todo useless ? // TODO clearly define userID globally |
 | creation | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
