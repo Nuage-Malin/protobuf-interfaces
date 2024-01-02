@@ -27,11 +27,10 @@ message FileApproxMetadata {
 message FileMetadata {
   FileApproxMetadata approxMetadata = 1;
   string fileId = 2; // TODO clearly define fileID globally
-  string dirId = 3; // TODO could do with a bool is Directory, to replace DirMetadata
-  FileState state = 4;
-  string lastEditorId = 5; // todo useless ? // TODO clearly define userID globally
-  google.protobuf.Timestamp creation = 6;
-  google.protobuf.Timestamp lastEdit = 7;
+  FileState state = 3;
+  string lastEditorId = 4; // todo useless ? // TODO clearly define userID globally
+  google.protobuf.Timestamp creation = 5;
+  google.protobuf.Timestamp lastEdit = 6;
 }
 
 /**
